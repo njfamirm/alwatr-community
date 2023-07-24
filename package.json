@@ -12,6 +12,7 @@
     "yarn": ">=1.22.0"
   },
   "workspaces": [
+    "core/*",
     "uniquely/*"
   ],
   "scripts": {
