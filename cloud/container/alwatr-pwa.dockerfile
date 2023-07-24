@@ -5,27 +5,8 @@ FROM docker.io/library/node:${NODE_VERSION}-alpine as builder
 
 WORKDIR /app
 
-RUN apk add --no-cache git
-
-# Install dependencies
-COPY package.json *.lock ./
-RUN if [ -f *.lock ]; then \
-      yarn install --immutable; \
-    else \
-      yarn install; \
-    fi;
-
 COPY . .
 
-# Reinstall to link internal packages
-RUN yarn install --immutable;
-
-ENV NODE_ENV production
-
-# Build all ts files
-RUN yarn build:ts
-
-# Build target package
 ARG PACKAGE_SOURCE
 RUN set -ex;\
     if [ -z "${PACKAGE_SOURCE}" ]; then\
@@ -33,9 +14,7 @@ RUN set -ex;\
       exit 1;\
     fi;
 RUN set -ex;\
-    cd "${PACKAGE_SOURCE}"; pwd; ls -lahF;\
-    yarn build;\
-    cd dist; pwd; ls -lahF;
+    cd "${PACKAGE_SOURCE}"; pwd; ls -lahF;
 
 # ---
 
