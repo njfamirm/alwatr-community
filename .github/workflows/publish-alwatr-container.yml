@@ -36,7 +36,7 @@ jobs:
         include:
           # services
           - image: day-countdown-bot
-            source: services/day-countdown-bot
+            source: uniquely/day-countdown-bot
             dockerfile: cloud/container/alwatr-services.dockerfile
             description: Day countdown Telegram bot.
 
