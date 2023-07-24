@@ -18,6 +18,7 @@ on:
       - '.github/workflows/publish-alwatr-container.yml'
 
 env:
+  NODE_VERSION: lts/*
   REGISTRY: ghcr.io
   USERNAME: ${{github.repository_owner}}
   # USERNAME: ${{github.actor}}
@@ -80,6 +81,24 @@ jobs:
             type=semver,enable=true,pattern={{version}}
             type=ref,enable=true,event=pr
             type=ref,enable=true,event=branch
+
+
+      - name: 🏗 Setup nodejs
+        uses: actions/setup-node@v3.7.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: yarn
+
+      - name: 🏗 Install dependencies
+        run: yarn install --immutable
+
+      - name: 🚀 Build Typescript
+        run: yarn build
+
+      - name: 🚀 Extra Packages Build
+        run: yarn lerna run build
+        env:
+          NODE_ENV: production
 
       - name: 🚀 Build and push container image
         id: build-and-push
