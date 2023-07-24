@@ -1,4 +1,4 @@
-import {UpdateType} from '@alwatr/telegram';
+import {UpdateType} from '@alwatr-community/telegram';
 
 import {logger} from '../../config.js';
 import {message} from '../../director/l18e-loader.js';

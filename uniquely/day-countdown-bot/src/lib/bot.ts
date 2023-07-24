@@ -1,4 +1,4 @@
-import {AlwatrTelegram} from '@alwatr/telegram';
+import {AlwatrTelegram} from '@alwatr-community/telegram';
 
 import {config} from '../config.js';
 

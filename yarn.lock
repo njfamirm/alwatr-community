@@ -29,6 +29,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@alwatr-community/day-countdown-bot@workspace:uniquely/day-countdown-bot":
+  version: 0.0.0-use.local
+  resolution: "@alwatr-community/day-countdown-bot@workspace:uniquely/day-countdown-bot"
+  dependencies:
+    "@alwatr-community/telegram": ^1.0.0
+    "@alwatr/fetch": ^1.0.0
+    "@alwatr/i18n": ^1.0.0
+    "@alwatr/logger": ^1.0.0
+    "@alwatr/math": ^1.0.1
+    "@alwatr/nano-server": ^1.0.0
+    "@alwatr/storage-engine": ^1.0.0
+    "@alwatr/type": ^1.0.0
+    "@grammyjs/types": ^3.0.3
+    "@types/moment-jalaali": ^0.7.5
+    "@types/node": ^20.2.5
+    esbuild: ^0.17.19
+    moment-jalaali: ^0.9.6
+    nodemon: ^2.0.22
+    npm-run-all: ^4.1.5
+    rimraf: ^3.0.2
+    typescript: ^5.0.4
+  languageName: unknown
+  linkType: soft
+
 "@alwatr-community/monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "@alwatr-community/monorepo@workspace:."
@@ -64,27 +88,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@alwatr/day-countdown-bot@workspace:uniquely/day-countdown-bot":
+"@alwatr-community/telegram@^1.0.0, @alwatr-community/telegram@workspace:core/telegram":
   version: 0.0.0-use.local
-  resolution: "@alwatr/day-countdown-bot@workspace:uniquely/day-countdown-bot"
+  resolution: "@alwatr-community/telegram@workspace:core/telegram"
   dependencies:
     "@alwatr/fetch": ^1.0.0
-    "@alwatr/i18n": ^1.0.0
     "@alwatr/logger": ^1.0.0
-    "@alwatr/math": ^1.0.1
     "@alwatr/nano-server": ^1.0.0
-    "@alwatr/storage-engine": ^1.0.0
-    "@alwatr/telegram": ^1.0.0
+    "@alwatr/storage-client": ^0.30.0
+    "@alwatr/storage-engine": ^0.30.0
     "@alwatr/type": ^1.0.0
     "@grammyjs/types": ^3.0.3
-    "@types/moment-jalaali": ^0.7.5
-    "@types/node": ^20.2.5
-    esbuild: ^0.17.19
-    moment-jalaali: ^0.9.6
-    nodemon: ^2.0.22
-    npm-run-all: ^4.1.5
-    rimraf: ^3.0.2
-    typescript: ^5.0.4
+    tslib: ^2.5.0
   languageName: unknown
   linkType: soft
 
@@ -232,21 +247,6 @@ __metadata:
   checksum: 53c530ebd7b89caf5f1cc698f92b6554f7a83d6b8d890d20ed75e7663f8e792a057eef8fe40c1d7c82b78302e94ae9bc5032bedadf6966f69abe626c413ed27d
   languageName: node
   linkType: hard
-
-"@alwatr/telegram@^1.0.0, @alwatr/telegram@workspace:core/telegram":
-  version: 0.0.0-use.local
-  resolution: "@alwatr/telegram@workspace:core/telegram"
-  dependencies:
-    "@alwatr/fetch": ^1.0.0
-    "@alwatr/logger": ^1.0.0
-    "@alwatr/nano-server": ^1.0.0
-    "@alwatr/storage-client": ^0.30.0
-    "@alwatr/storage-engine": ^0.30.0
-    "@alwatr/type": ^1.0.0
-    "@grammyjs/types": ^3.0.3
-    tslib: ^2.5.0
-  languageName: unknown
-  linkType: soft
 
 "@alwatr/type@npm:^0.30.0":
   version: 0.30.0
