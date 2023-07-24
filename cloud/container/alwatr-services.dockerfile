@@ -7,15 +7,15 @@ WORKDIR /app
 # Install dependencies
 COPY package.json *.lock ./
 RUN if [ -f *.lock ]; then \
-      yarn install --frozen-lockfile \
+      yarn install --immutable; \
     else \
-      yarn install \
+      yarn install; \
     fi;
 
 COPY . .
 
 # Reinstall to link internal packages
-RUN yarn install --frozen-lockfile
+RUN yarn install --immutable
 
 ENV NODE_ENV production
 
@@ -38,7 +38,7 @@ RUN set -ex;\
 RUN set -ex;\
     pwd;\
     rm -rf node_modules;\
-    yarn install --frozen-lockfile --non-interactive --production true;
+    yarn install --immutable;
 
 # ---
 

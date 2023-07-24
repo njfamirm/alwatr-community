@@ -10,7 +10,7 @@ RUN apk add --no-cache git
 # Install dependencies
 COPY package.json *.lock ./
 RUN if [ -f *.lock ]; then \
-      yarn install --frozen-lockfile; \
+      yarn install --immutable; \
     else \
       yarn install; \
     fi;
@@ -18,7 +18,7 @@ RUN if [ -f *.lock ]; then \
 COPY . .
 
 # Reinstall to link internal packages
-RUN yarn install --frozen-lockfile;
+RUN yarn install --immutable;
 
 ENV NODE_ENV production
 
