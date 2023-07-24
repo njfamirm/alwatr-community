@@ -2,7 +2,7 @@
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "version": "1.0.0",
   "npmClient": "yarn",
-  "packages": ["core/*", "services/*", "ui/*", "uniquely/*", "labs/*"],
+  "packages": ["core/*", "uniquely/*"],
   "command": {
     "version": {
       "conventionalCommits": true,
