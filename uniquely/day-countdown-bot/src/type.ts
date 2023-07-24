@@ -4,8 +4,8 @@ export interface DayCountdownChat extends AlwatrDocumentObject {
   chatDetail?: ChatDetail;
   isSubscribed?: boolean;
   lastBotMessageId?: number;
-  lastDayCountdownSent?: Array<number>;
-  lastNotifyMessageId?: Array<number>;
+  lastDayCountdownSent?: number[];
+  lastNotifyMessageId?: number[];
   isDeleted?: boolean,
 }
 
@@ -45,7 +45,7 @@ export interface AdminChatInfo extends StringifyableRecord {
 }
 
 export interface BotSetting extends AlwatrDocumentObject {
-  adminInfoList: Array<AdminChatInfo>;
+  adminInfoList: AdminChatInfo[];
 }
 
 export interface Content extends AlwatrDocumentObject {

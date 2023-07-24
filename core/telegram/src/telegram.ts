@@ -125,6 +125,7 @@ export class AlwatrTelegram {
   ): void {
     this.logger.logMethodArgs?.('defineUpdateHandler', {updateType});
     if (priority === 'high') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.updateHandlerRecord[updateType]?.unshift(handler as any); // TODO: better way?
     }
     else {

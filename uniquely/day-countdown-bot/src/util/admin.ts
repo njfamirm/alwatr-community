@@ -3,7 +3,7 @@ import {configStorageClient} from '../lib/storage.js';
 
 import type {AdminChatInfo} from '../type.js';
 
-export const adminInfoList: Array<AdminChatInfo> = (await configStorageClient.get('admin_list'))?.adminInfoList ?? [];
+export const adminInfoList: AdminChatInfo[] = (await configStorageClient.get('admin_list'))?.adminInfoList ?? [];
 
 export function isAdmin(chatId: number | string): boolean {
   const isAdmin = adminInfoList.some((info) => info.chatId === +chatId);

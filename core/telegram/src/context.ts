@@ -35,7 +35,7 @@ export class AlwatrTelegramContext<U extends Omit<Update, 'update_id'>> {
     return this.update.message?.message_thread_id ?? this.update.callback_query?.message?.message_thread_id;
   }
 
-  get commandParams(): Array<string> | null {
+  get commandParams(): string[] | null {
     if (this.update.message && this.update.message.text) {
       if (this.update.message.text.startsWith('/')) {
         const params = this.update.message.text.split(' ');

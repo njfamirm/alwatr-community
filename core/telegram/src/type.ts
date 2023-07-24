@@ -54,15 +54,15 @@ export type UpdateHandlerFunction<U extends Omit<Update, 'update_id'>> = (update
 export type CommandHandlerFunction = (context: AlwatrTelegramContext<UpdateType<'message'>>) => void;
 export type CallbackQueryHandlerFunction = (context: AlwatrTelegramContext<UpdateType<'callback_query'>>) => void;
 
-export type UpdateHandlerRecord = {
-  all: Array<UpdateHandlerFunction<UpdateType<Exclude<keyof Update, 'update_id'>>>>;
-  textMessage: Array<UpdateHandlerFunction<UpdateType<'message'>>>;
-  dataCallbackQuery: Array<UpdateHandlerFunction<UpdateType<'callback_query'>>>;
-};
+export interface UpdateHandlerRecord {
+  all: UpdateHandlerFunction<UpdateType<Exclude<keyof Update, 'update_id'>>>[];
+  textMessage: UpdateHandlerFunction<UpdateType<'message'>>[];
+  dataCallbackQuery: UpdateHandlerFunction<UpdateType<'callback_query'>>[];
+}
 
 export type MiddlewareRecord = StringifyableRecord & {
-  message: Array<{regex: RegExp; handler: CommandHandlerFunction}>;
-  callbackQuery: Array<{name: string; handler: CallbackQueryHandlerFunction}>;
+  message: {regex: RegExp; handler: CommandHandlerFunction}[];
+  callbackQuery: {name: string; handler: CallbackQueryHandlerFunction}[];
 };
 
 // API
@@ -86,7 +86,7 @@ export interface EditTextMessageOption {
   message_id?: number;
   inline_message_id?: string;
   parse_mode?: string;
-  entities?: Array<MessageEntity>;
+  entities?: MessageEntity[];
   disable_web_page_preview?: boolean;
   reply_markup?: InlineKeyboardMarkup;
 }
