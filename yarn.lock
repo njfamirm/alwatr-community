@@ -45,7 +45,7 @@ __metadata:
     "@types/moment-jalaali": ^0.7.5
     "@types/node": ^20.4.4
     esbuild: ^0.18.16
-    moment-jalaali: ^0.9.6
+    moment-jalaali: ^0.10.0
     nodemon: ^2.0.22
     npm-run-all: ^4.1.5
     typescript: ^5.0.4
@@ -8640,15 +8640,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment-jalaali@npm:^0.9.6":
-  version: 0.9.6
-  resolution: "moment-jalaali@npm:0.9.6"
+"moment-jalaali@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "moment-jalaali@npm:0.10.0"
   dependencies:
     jalaali-js: ^1.1.0
     moment: ^2.22.2
     moment-timezone: ^0.5.21
     rimraf: ^3.0.2
-  checksum: 3ff8ab6b73346a31aeca9816fdadb362ca409ad1b882ed0842e1ec65cedc733cb2f109f8040f74a8c9cd1b37d53fa61bb02b75283599e4f3afe13eef337320d7
+  checksum: a2c82f748f771404a9865537bc3d14f3a21aa2ae7790120f25200585107defbd480b0d2f9dd1104b2d3ecc53b23fe7a3315acdcff15aea82520beef8cd24ff70
   languageName: node
   linkType: hard
 
