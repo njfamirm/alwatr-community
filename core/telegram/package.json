@@ -14,7 +14,7 @@
   "main": "telegram.js",
   "type": "module",
   "types": "telegram.d.ts",
-  "author": "S. Ali Mihandoost <ali.mihandoost@gmail.com> (https://ali.mihandoost.com)",
+  "author": "S. Amir Mohammad Najafi <njfamirm@gmail.com> (https://njfamirm.ir)",
   "license": "MIT",
   "files": [
     "**/*.{d.ts.map,d.ts,js.map,js,html,md}"
@@ -24,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AliMD/alwatr",
+    "url": "https://github.com/njfamirm/alwatr-community",
     "directory": "core/telegram"
   },
-  "homepage": "https://github.com/AliMD/alwatr/tree/main/core/telegram#readme",
+  "homepage": "https://github.com/njfamirm/alwatr-community/tree/main/core/telegram#readme",
   "bugs": {
-    "url": "https://github.com/AliMD/alwatr/issues"
+    "url": "https://github.com/njfamirm/alwatr-community/issues"
   },
   "dependencies": {
     "@alwatr/fetch": "^1.0.0",
@@ -37,10 +37,10 @@
     "@alwatr/nano-server": "^1.0.0",
     "@alwatr/storage-client": "^0.30.0",
     "@alwatr/storage-engine": "^0.30.0",
-    "@grammyjs/types": "^3.0.3",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@alwatr/type": "^1.0.0"
+    "@alwatr/type": "^1.0.0",
+    "@grammyjs/types": "^3.0.3"
   }
 }
