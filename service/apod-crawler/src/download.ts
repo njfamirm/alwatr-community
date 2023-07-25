@@ -6,7 +6,7 @@ import {logger} from './config.js';
 
 import type {ApodApiResponse} from './type.js';
 
-export async function downloadApiMedia(response: ApodApiResponse, pathPrefix = ''): Promise<void> {
+export async function downloadResponseMedia(response: ApodApiResponse, pathPrefix = ''): Promise<void> {
   logger.logMethod?.('downloadApiMedia');
   if (response.media_type === 'image') {
     await downloadMedia(pathPrefix + 'photo.jpg', response.url);

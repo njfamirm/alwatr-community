@@ -1,6 +1,6 @@
 import {config, logger} from './config.js';
-import {downloadApiMedia} from './download.js';
-import {saveExplanation} from './explanation.js';
+import {downloadResponseMedia} from './download.js';
+import {saveResponse} from './explanation.js';
 import {fetchApodApiResponse} from './fetch.js';
 import {mkdirp} from './util.js';
 
@@ -10,7 +10,10 @@ export async function crawl(): Promise<void> {
   if (response != null) {
     const pathPrefix = config.dataPathPrefix + response.date + '/';
     mkdirp(pathPrefix);
-    await downloadApiMedia(response, pathPrefix);
-    saveExplanation(response, pathPrefix);
+    saveResponse(response, pathPrefix);
+    await downloadResponseMedia(response, pathPrefix);
+  }
+  else {
+    throw new Error('No response from API');
   }
 }
