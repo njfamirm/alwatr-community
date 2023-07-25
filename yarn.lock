@@ -39,7 +39,7 @@ __metadata:
     "@alwatr/logger": ^1.0.0
     "@alwatr/math": ^1.0.1
     "@alwatr/nano-server": ^1.0.0
-    "@alwatr/storage-engine": ^1.0.0
+    "@alwatr/storage-engine": ^1.0.1
     "@alwatr/type": ^1.0.0
     "@grammyjs/types": ^3.0.3
     "@types/moment-jalaali": ^0.7.5
@@ -95,7 +95,7 @@ __metadata:
     "@alwatr/logger": ^1.0.0
     "@alwatr/nano-server": ^1.0.0
     "@alwatr/storage-client": ^0.30.0
-    "@alwatr/storage-engine": ^0.30.0
+    "@alwatr/storage-engine": ^1.0.1
     "@alwatr/type": ^1.0.0
     "@grammyjs/types": ^3.0.3
     tslib: ^2.6.1
@@ -224,18 +224,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alwatr/storage-engine@npm:^0.30.0":
-  version: 0.30.0
-  resolution: "@alwatr/storage-engine@npm:0.30.0"
-  dependencies:
-    "@alwatr/logger": ^0.30.0
-    exit-hook: ^3.2.0
-    tslib: ^2.5.0
-  checksum: 1f2e6efa7aa195d6cf3e4dbb786272b3bf4332eed47cfdf8ff476d8acf071e881c59b6826830e0280f4293294dfdefb8f1cb3579cbc8d0ade06d39ded75297a7
-  languageName: node
-  linkType: hard
-
-"@alwatr/storage-engine@npm:^1.0.0":
+"@alwatr/storage-engine@npm:^1.0.1":
   version: 1.0.1
   resolution: "@alwatr/storage-engine@npm:1.0.1"
   dependencies:
