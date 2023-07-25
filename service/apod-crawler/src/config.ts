@@ -10,4 +10,5 @@ if (apodApiToken == null) {
 export const config = {
   apodApiUrl: 'https://api.nasa.gov/planetary/apod',
   apodApiToken,
+  mediaPathPrefix: process.env.MEDIA_PATH_PREFIX ?? 'media/',
 };

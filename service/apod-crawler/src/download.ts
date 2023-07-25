@@ -6,14 +6,14 @@ import {logger} from './config.js';
 
 import type {ApodApiResponse} from './type.js';
 
-export async function downloadApiMedia(response: ApodApiResponse): Promise<void> {
+export async function downloadApiMedia(response: ApodApiResponse, pathPrefix?: string): Promise<void> {
   if (response.media_type === 'image') {
-    await downloadMedia(response.date + '.jpg', response.url);
-    await downloadMedia(response.date + '-hd.jpg', response.hdurl);
+    await downloadMedia(pathPrefix + response.date + '.jpg', response.url);
+    await downloadMedia(pathPrefix + response.date + '-hd.jpg', response.hdurl);
   }
   else if (response.media_type === 'video') {
     if (response.thumbnail_url != null) {
-      await downloadMedia(response.date + '-thumbnail.jpg', response.thumbnail_url);
+      await downloadMedia(pathPrefix + response.date + '-thumbnail.jpg', response.thumbnail_url);
     }
   }
 }
