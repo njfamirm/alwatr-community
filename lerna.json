@@ -4,6 +4,7 @@
   "npmClient": "yarn",
   "packages": [
     "core/*",
+    "service/*",
     "uniquely/*"
   ],
   "command": {

@@ -36,6 +36,12 @@ jobs:
       matrix:
         include:
           # services
+          - image: apod-crawler
+            source: service/apod-crawler
+            dockerfile: cloud/container/alwatr-services.dockerfile
+            description: Alwatr Nasa APOD crawler.
+
+          # uniquely
           - image: day-countdown-bot
             source: uniquely/day-countdown-bot
             dockerfile: cloud/container/alwatr-services.dockerfile
