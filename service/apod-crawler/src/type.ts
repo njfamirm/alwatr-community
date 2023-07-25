@@ -10,5 +10,5 @@ export type ApodApiResponse = {
   thumbnail_url?: 'https://img.youtube.com/vi/0fKBhvDjuy0/0.jpg',
 } | {
   media_type: 'image',
-  hdurl?: string,
+  hdurl: string,
 })
