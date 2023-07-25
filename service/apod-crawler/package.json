@@ -13,7 +13,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/njfamirm/alwatr-community",
-    "directory": "uniquely/apod-crawler"
+    "directory": "service/apod-crawler"
   },
   "scripts": {
     "b": "yarn build",
