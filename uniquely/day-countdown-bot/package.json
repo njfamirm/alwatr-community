@@ -41,7 +41,7 @@
     "@alwatr/logger": "^1.0.0",
     "@alwatr/math": "^1.0.1",
     "@alwatr/nano-server": "^1.0.0",
-    "@alwatr/storage-engine": "^1.0.0",
+    "@alwatr/storage-engine": "^1.0.1",
     "@alwatr/type": "^1.0.0",
     "@grammyjs/types": "^3.0.3",
     "@types/moment-jalaali": "^0.7.5",
