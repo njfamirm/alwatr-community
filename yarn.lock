@@ -33,7 +33,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@alwatr-community/day-countdown-bot@workspace:uniquely/day-countdown-bot"
   dependencies:
-    "@alwatr-community/telegram": ^1.0.0
+    "@alwatr-community/telegram": ^0.0.0
     "@alwatr/fetch": ^1.0.0
     "@alwatr/i18n": ^1.0.0
     "@alwatr/logger": ^1.0.0
@@ -87,7 +87,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@alwatr-community/telegram@^1.0.0, @alwatr-community/telegram@workspace:core/telegram":
+"@alwatr-community/telegram@^0.0.0, @alwatr-community/telegram@workspace:core/telegram":
   version: 0.0.0-use.local
   resolution: "@alwatr-community/telegram@workspace:core/telegram"
   dependencies:
