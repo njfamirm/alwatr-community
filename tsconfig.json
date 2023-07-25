@@ -15,7 +15,13 @@
   "files": [],
   "exclude": [],
   "references": [
+    // core
     {"path": "core/telegram"},
+
+    // service
+    {"path": "service/apod-crawler"},
+
+    // uniquely
     {"path": "uniquely/day-countdown-bot"}
   ]
 }
