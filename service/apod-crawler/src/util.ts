@@ -1,8 +1,6 @@
-import {existsSync, mkdir} from 'node:fs';
+import {existsSync, mkdirSync} from 'node:fs';
 
-export function mkdirp(path: string): void {
+export async function mkdirp(path: string): Promise<void> {
   if (existsSync(path)) return;
-  mkdir(path, {recursive: true}, (err) => {
-    if (err) throw err;
-  });
+  mkdirSync(path, {recursive: true});
 }

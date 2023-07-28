@@ -9,7 +9,7 @@ export async function crawl(): Promise<void> {
   const response = await fetchApodApiResponse();
   if (response != null) {
     const pathPrefix = config.dataPathPrefix + response.date + '/';
-    mkdirp(pathPrefix);
+    await mkdirp(pathPrefix);
     saveResponse(response, pathPrefix);
     await downloadResponseMedia(response, pathPrefix);
   }
