@@ -4,7 +4,7 @@
 
 If there are any vulnerabilities in **The Alwatr Community Library**, don't hesitate to _report them_.
 
-1. Contact me by `report@mihandoost.com`.
+1. Contact me by `report@njfamirm.ir`.
 2. Describe the vulnerability.
 
    If you have a fix, that is most welcome -- please attach or summarize it in your message!
