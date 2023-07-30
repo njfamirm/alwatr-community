@@ -6,7 +6,7 @@ import {mkdirp} from './util.js';
 
 export async function crawl(): Promise<void> {
   logger.logMethod?.('crawl');
-  const response = await fetchApodApiResponse('2023-07-20');
+  const response = await fetchApodApiResponse();
   if (response != null) {
     const pathPrefix = config.dataPathPrefix + response.date.replace(/-/g, '/') + '/';
     await mkdirp(pathPrefix);
