@@ -5,7 +5,7 @@ import {config, logger} from './config.js';
 import type {ApodApiResponse} from './type.js';
 
 export async function fetchApodApiResponse(date?: string): Promise<ApodApiResponse | undefined> {
-  logger.logMethod?.('fetchApodApiResponse');
+  logger.logMethodArgs?.('fetchApodApiResponse', date);
   const response = await fetch({
     url: config.apodApiUrl,
     queryParameters: {

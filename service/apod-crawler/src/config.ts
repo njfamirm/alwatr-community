@@ -11,4 +11,5 @@ export const config = {
   apodApiUrl: 'https://api.nasa.gov/planetary/apod',
   apodApiToken,
   dataPathPrefix: process.env.DATA_PATH_PREFIX ?? 'data/',
+  date: process.env.DATE,
 };
