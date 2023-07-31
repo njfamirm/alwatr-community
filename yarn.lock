@@ -114,6 +114,7 @@ __metadata:
     nodemon: ^3.0.1
     npm-run-all: ^4.1.5
     typescript: ^5.0.4
+    yaml: ^2.3.1
   languageName: unknown
   linkType: soft
 
@@ -13170,7 +13171,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yaml@npm:^2.1.1":
+"yaml@npm:^2.1.1, yaml@npm:^2.3.1":
   version: 2.3.1
   resolution: "yaml@npm:2.3.1"
   checksum: 2c7bc9a7cd4c9f40d3b0b0a98e370781b68b8b7c4515720869aced2b00d92f5da1762b4ffa947f9e795d6cd6b19f410bd4d15fdd38aca7bd96df59bd9486fb54
