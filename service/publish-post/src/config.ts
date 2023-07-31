@@ -28,11 +28,11 @@ export const config = {
   contentFilePath: env.CONTENT_FILE_PATH ?? './data/content.md',
   mediaBaseUrl,
   medium: {
-    apiUrl: `https://api.medium.com/v1/users/${mediumUserId}/posts`,
+    apiUrl: `https://api.medium.com/v1/users/${mediumUserId}/posts/`,
     mediumApiToken,
   },
   devTo: {
-    apiUrl: 'https://dev.to/api/articles',
+    apiUrl: 'https://dev.to/api/articles/',
     devToApiToken,
   },
 };

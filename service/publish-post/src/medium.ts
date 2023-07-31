@@ -5,7 +5,7 @@ import {config, logger} from './config.js';
 import type {MediumArticle} from './type.js';
 
 export function mediumPublishPost(article: MediumArticle, apiKey: string): Promise<Response> {
-  logger.logMethodArgs?.('fetchPublishPost', {article});
+  logger.logMethodArgs?.('mediumPublishPost', {article});
   return fetch({
     url: config.medium.apiUrl,
     method: 'POST',
@@ -21,17 +21,3 @@ export function mediumPublishPost(article: MediumArticle, apiKey: string): Promi
     },
   });
 }
-
-// export function fetchUpdatePost(article: MediumArticle, postId: number, apiKey: string): Promise<Response> {
-//   logger.logMethodArgs?.('fetchUpdatePost', {article, postId});
-//   return fetch({
-//     url: `${config.medium.apiUrl}/${postId}`,
-//     method: 'PUT',
-//     headers: {
-//       'Authorization': `Bearer ${apiKey}`,
-//     },
-//     bodyJson: {
-//       article,
-//     },
-//   });
-// }
