@@ -4,7 +4,7 @@ import {config, logger} from './config.js';
 
 import type {DevToArticle} from './type.js';
 
-export function fetchPublishPost(article: DevToArticle, apiKey: string): Promise<Response> {
+export function devToPublishPost(article: DevToArticle, apiKey: string): Promise<Response> {
   logger.logMethodArgs?.('fetchPublishPost', {article});
   return fetch({
     url: config.devTo.apiUrl,
@@ -18,7 +18,7 @@ export function fetchPublishPost(article: DevToArticle, apiKey: string): Promise
   });
 }
 
-export function fetchUpdatePost(article: DevToArticle, postId: number, apiKey: string): Promise<Response> {
+export function devToUpdatePost(article: DevToArticle, postId: number, apiKey: string): Promise<Response> {
   logger.logMethodArgs?.('fetchUpdatePost', {article, postId});
   return fetch({
     url: `${config.devTo.apiUrl}/${postId}`,
@@ -35,6 +35,6 @@ export function fetchUpdatePost(article: DevToArticle, postId: number, apiKey: s
 export async function updatePostDevTo(postId: number, article: DevToArticle): Promise<void> {
   logger.logMethodArgs?.('updateNewPostDevTo', {article});
 
-  const response = await fetchUpdatePost(article, postId, config.devTo.devToApiToken);
+  const response = await devToUpdatePost(article, postId, config.devTo.devToApiToken);
   logger.logProperty?.('updateNewPostDevTo', {response});
 }

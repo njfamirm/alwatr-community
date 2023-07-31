@@ -14,8 +14,37 @@ export interface PostMetadata extends StringifyableRecord {
   medium: {
     canonicalUrl?: string,
     publishStatus?: 'public' | 'draft' | 'unlisted',
+    license?: MediumArticle['license'],
   }
 }
+
+export interface MediumArticle extends StringifyableRecord {
+  title: string,
+  contentFormat?: 'html' | 'markdown',
+  content: string,
+  canonicalUrl?: string,
+  tags?: string[],
+  publishStatus?: 'public' | 'draft' | 'unlisted',
+  // eslint-disable-next-line max-len
+  license?: 'all-rights-reserved' | 'cc-40-by' | 'cc-40-by-sa' | 'cc-40-by-nd' | 'cc-40-by-nc' | 'cc-40-by-nc-nd' | 'cc-40-by-nc-sa' | 'cc-40-zero' | 'public-domain',
+  notifyFollowers?: boolean
+}
+
+export interface MediumPublishPostResponse {
+  data: {
+    id: string,
+    title: string,
+    authorId: string,
+    tags: string[],
+    url: string,
+    canonicalUrl: string,
+    publishStatus: MediumArticle['publishStatus'],
+    publishedAt: number,
+    license: MediumArticle['license'],
+    licenseUrl: string
+  }
+}
+
 export interface DevToArticle extends StringifyableRecord {
   title: string,
   description?: string,
