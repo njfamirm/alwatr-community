@@ -11,3 +11,5 @@ export interface DevToArticle extends StringifyableRecord {
   published?: boolean,
   tags?: string[],
 }
+
+export type DevToArticleMetadata = Exclude<DevToArticle, 'body_markdown'>;
