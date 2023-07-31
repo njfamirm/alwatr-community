@@ -1,0 +1,47 @@
+{
+  "name": "@alwatr-community/publish-post",
+  "version": "0.1.0",
+  "description": "Alwatr Publish post to medium and dev.to scripts.",
+  "type": "module",
+  "author": "S. Amir Mohammad Najafi <njfamirm@gmail.com> (https://njfamirm.ir)",
+  "private": true,
+  "engines": {
+    "node": ">=18.13.0",
+    "npm": ">=8.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/njfamirm/alwatr-community",
+    "directory": "service/publish-post"
+  },
+  "scripts": {
+    "b": "yarn build",
+    "c": "yarn clean",
+    "cb": "run-s clean build",
+    "s": "yarn start",
+    "w": "yarn watch",
+    "start": "NODE_OPTIONS=--enable-source-maps run-s clean build serve",
+    "build": "yarn build:es --analyze=verbose",
+    "build:ts": "tsc --build",
+    "build:es": "esbuild src/index.ts --platform=node --target=node19 --bundle --format=esm --sourcemap --outdir=dist --out-extension:.js=.mjs",
+    "clean": "rm -rf dist build .tsbuildinfo",
+    "serve": "node --enable-source-maps dist/index.mjs",
+    "serve:debug": "node --inspect --enable-source-maps dist/index.mjs",
+    "watch": "run-s clean build && run-p watch:es watch:node",
+    "watch:node": "nodemon -w dist/ --enable-source-maps dist/index.mjs",
+    "watch:debug-node": "nodemon -w dist/ --inspect --enable-source-maps dist/index.mjs",
+    "watch:ts": "yarn build:ts --watch --preserveWatchOutput",
+    "watch:es": "yarn build:es --watch"
+  },
+  "devDependencies": {
+    "@alwatr/fetch": "^1.0.0",
+    "@alwatr/logger": "^1.0.0",
+    "@alwatr/type": "^1.0.0",
+    "@types/node": "^20.4.5",
+    "esbuild": "^0.18.17",
+    "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.0.4"
+  }
+}
