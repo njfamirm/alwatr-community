@@ -1,7 +1,8 @@
 import {logger} from './config.js';
-import {publishNewPostDevTo} from './publish.js';
+import {publishNewPostDevTo, publishNewPostMedium} from './publish.js';
 
 logger.logOther?.('..:: Publish Post ::..');
 
 
-publishNewPostDevTo();
+await publishNewPostMedium();
+await publishNewPostDevTo();

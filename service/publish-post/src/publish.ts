@@ -1,16 +1,18 @@
 import {config, logger} from './config.js';
-// import {devToPublishPost} from './dev-to.js';
+import {devToPublishPost} from './dev-to.js';
 import {mediumPublishPost} from './medium.js';
 import {readPostMetadata} from './metadata.js';
 import {getPostContent} from './post.js';
 
 import type {DevToArticle, MediumArticle} from './type.js';
 
-export async function publishNewPostDevTo(): Promise<void> {
-  logger.logMethod?.('publishNewPostDevTo');
+export async function publishNewPostMedium(): Promise<void> {
+  logger.logMethod?.('publishNewPostMedium');
 
-  const content = getPostContent(config.contentFilePath);
-  const metadata = readPostMetadata(config.metadataFilePath);
+  let content = getPostContent(config.contentFilePath);
+  const metadata = readPostMetadata(config.metadataFilePath, config.mediaBaseUrl);
+
+  content = `![${metadata.title}](${metadata.coverImage})\n${content}`;
 
   const mediumArticle: MediumArticle = {
     title: metadata.title,
@@ -22,6 +24,18 @@ export async function publishNewPostDevTo(): Promise<void> {
     license: metadata.medium.license,
     notifyFollowers: false,
   };
+  logger.logProperty?.('publishNewPostMedium', {article: mediumArticle});
+
+  const mediumResponse = await mediumPublishPost(mediumArticle, config.medium.mediumApiToken);
+  logger.logProperty?.('publishNewPostMedium', {response: await mediumResponse.json()});
+}
+
+export async function publishNewPostDevTo(): Promise<void> {
+  logger.logMethod?.('publishNewPostDevTo');
+
+  const content = getPostContent(config.contentFilePath);
+  const metadata = readPostMetadata(config.metadataFilePath, config.mediaBaseUrl);
+
   const devToArticle: DevToArticle = {
     title: metadata.title,
     published: false,
@@ -35,8 +49,6 @@ export async function publishNewPostDevTo(): Promise<void> {
   };
   logger.logProperty?.('publishNewPostDevTo', {article: devToArticle});
 
-  const mediumResponse = await mediumPublishPost(mediumArticle, config.medium.mediumApiToken);
-  logger.logProperty?.('publishNewPostDevTo', {response: await mediumResponse.json()});
-  // const devToResponse = await devToPublishPost(devToArticle, config.devTo.devToApiToken);
-  // logger.logProperty?.('publishNewPostDevTo', {response: await devToResponse.json()});
+  const devToResponse = await devToPublishPost(devToArticle, config.devTo.devToApiToken);
+  logger.logProperty?.('publishNewPostDevTo', {response: await devToResponse.json()});
 }
