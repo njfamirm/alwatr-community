@@ -32,13 +32,6 @@ export function fetchUpdatePost(article: DevToArticle, postId: number, apiKey: s
   });
 }
 
-export async function publishNewPostDevTo(article: DevToArticle): Promise<void> {
-  logger.logMethodArgs?.('publishNewPostDevTo', {article});
-
-  const response = await fetchPublishPost(article, config.devTo.devToApiToken);
-  logger.logProperty?.('publishNewPostDevTo', {response});
-}
-
 export async function updatePostDevTo(postId: number, article: DevToArticle): Promise<void> {
   logger.logMethodArgs?.('updateNewPostDevTo', {article});
 
