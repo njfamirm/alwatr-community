@@ -6,11 +6,11 @@ import {getPostContent} from './post.js';
 
 import type {DevToArticle, MediumArticle} from './type.js';
 
-export async function publishNewPostMedium(): Promise<void> {
+export async function publishNewPostMedium(basePath: string): Promise<void> {
   logger.logMethod?.('publishNewPostMedium');
 
-  let content = getPostContent(config.contentFilePath);
-  const metadata = readPostMetadata(config.metadataFilePath, config.mediaBaseUrl);
+  let content = getPostContent(basePath + config.contentFilePath);
+  const metadata = readPostMetadata(basePath + config.metadataFilePath, config.mediaBaseUrl);
 
   content = `![${metadata.title}](${metadata.coverImage})\n${content}`;
 
@@ -30,11 +30,11 @@ export async function publishNewPostMedium(): Promise<void> {
   logger.logProperty?.('publishNewPostMedium', {response: await mediumResponse.json()});
 }
 
-export async function publishNewPostDevTo(): Promise<void> {
+export async function publishNewPostDevTo(basePath: string): Promise<void> {
   logger.logMethod?.('publishNewPostDevTo');
 
-  const content = getPostContent(config.contentFilePath);
-  const metadata = readPostMetadata(config.metadataFilePath, config.mediaBaseUrl);
+  const content = getPostContent(basePath + config.contentFilePath);
+  const metadata = readPostMetadata(basePath + config.metadataFilePath, config.mediaBaseUrl);
 
   const devToArticle: DevToArticle = {
     title: metadata.title,
