@@ -7,6 +7,12 @@ function readPost(path: string): string {
   return readFileSync(path, 'utf-8');
 }
 
+export function addCoverToPost(text: string, coverURL: string): string {
+  logger.logMethodArgs?.('addCoverToPost', {text, cover: coverURL});
+  return `![cover](${coverURL})
+  ${text}`;
+}
+
 function convertAbsoluteMediaPathToRelative(text: string, baseUrl: string): string {
   logger.logMethodArgs?.('convertAbsoluteMediaPathToRelative', {text, baseUrl});
   return text.replace(/\[(.+?)\]\((\.\/.+?)\)/g, `[$1](${baseUrl}$2)`).replaceAll('/./', '/');
