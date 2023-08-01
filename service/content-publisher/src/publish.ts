@@ -27,7 +27,7 @@ export async function publishNewPostMedium(basePath: string): Promise<string> {
   };
   logger.logProperty?.('publishNewPostMedium', {article: mediumArticle});
 
-  const mediumResponse = await mediumPublishPost(mediumArticle, config.medium.mediumApiToken);
+  const mediumResponse = await mediumPublishPost(mediumArticle, config.medium.apiToken);
 
   if (mediumResponse.status !== 201) {
     throw new Error(`medium.com response status code is ${mediumResponse.status}`);
@@ -60,7 +60,7 @@ export async function publishNewPostDevTo(basePath: string): Promise<string> {
   };
   logger.logProperty?.('publishNewPostDevTo', {article: devToArticle});
 
-  const devToResponse = await devToPublishPost(devToArticle, config.devTo.devToApiToken);
+  const devToResponse = await devToPublishPost(devToArticle, config.devTo.apiToken);
 
   if (devToResponse.status !== 201) {
     throw new Error(`dev.to response status code is ${devToResponse.status}`);

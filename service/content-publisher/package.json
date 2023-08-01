@@ -1,7 +1,7 @@
 {
   "name": "@alwatr-community/content-publisher",
   "version": "0.1.0",
-  "description": "Alwatr Publish post to medium and dev.to scripts.",
+  "description": "Alwatr content publisher to medium and dev-to.",
   "type": "module",
   "author": "S. Amir Mohammad Najafi <njfamirm@gmail.com> (https://njfamirm.ir)",
   "private": true,

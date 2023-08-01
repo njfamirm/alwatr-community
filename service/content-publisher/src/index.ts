@@ -1,6 +1,6 @@
 import {argv} from 'node:process';
 
-import {logger} from './config.js';
+import {checkConfig, logger} from './config.js';
 import {publishNewPostDevTo, publishNewPostMedium} from './publish.js';
 
 logger.logOther?.('..:: Content Publisher ::..');
@@ -11,14 +11,14 @@ const basePath = argv[argv.indexOf('-b') + 1];
 if (publishWebsite == '') {
   throw new Error('Website name required, -w medium|dev-to');
 }
-if (basePath == '') {
+else if (basePath == '') {
   throw new Error('Base path required, -b ./data/');
 }
 
 logger.logOther?.('Publishing to:', publishWebsite);
 logger.logOther?.('Base path:', basePath);
 
-
+checkConfig(publishWebsite);
 if (publishWebsite === 'medium') {
   await publishNewPostMedium(basePath);
 }
@@ -26,5 +26,5 @@ else if (publishWebsite === 'dev-to') {
   await publishNewPostDevTo(basePath);
 }
 else {
-  throw new Error('Invalid website name');
+  throw new Error('Invalid publish website');
 }
