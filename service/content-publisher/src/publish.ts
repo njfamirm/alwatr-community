@@ -6,12 +6,12 @@ import {getPostContent} from './post.js';
 
 import type {DevToArticle, DevToPublishPostResponse, MediumArticle, MediumPublishPostResponse} from './type.js';
 
-export async function publishNewPostMedium(basePath: string): Promise<string> {
+export async function publishNewPostMedium(): Promise<string> {
   logger.logMethod?.('publishNewPostMedium');
 
-  const metadataPath = basePath + config.metadataFilePath;
-  let content = getPostContent(basePath + config.contentFilePath);
-  const metadata = readPostMetadata(metadataPath);
+  let content = getPostContent(config.contentFilePath);
+  const metadata = readPostMetadata(config.metadataFilePath);
+
 
   content = `![${metadata.title}](${config.mediaBaseUrl + metadata.coverImage})\n${content}`;
 
@@ -40,12 +40,12 @@ export async function publishNewPostMedium(basePath: string): Promise<string> {
   return mediumResponseJson.data.url;
 }
 
-export async function publishNewPostDevTo(basePath: string): Promise<string> {
+export async function publishNewPostDevTo(): Promise<string> {
   logger.logMethod?.('publishNewPostDevTo');
 
-  const metadataPath = basePath + config.metadataFilePath;
-  const content = getPostContent(basePath + config.contentFilePath);
-  const metadata = readPostMetadata(metadataPath);
+  const content = getPostContent(config.contentFilePath);
+  const metadata = readPostMetadata(config.metadataFilePath);
+
 
   const devToArticle: DevToArticle = {
     title: metadata.title,
@@ -69,6 +69,6 @@ export async function publishNewPostDevTo(basePath: string): Promise<string> {
   const devToResponseJson = await devToResponse.json() as DevToPublishPostResponse;
   logger.logProperty?.('publishNewPostDevTo', {devToResponseJson});
 
-  addPostLinkToMetadata(metadataPath, metadata, devToResponseJson.url, 'dev-to');
+  addPostLinkToMetadata(config.metadataFilePath, metadata, devToResponseJson.url, 'dev-to');
   return devToResponseJson.url;
 }

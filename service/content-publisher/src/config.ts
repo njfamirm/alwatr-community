@@ -12,8 +12,8 @@ if (mediaBaseUrl == null) {
 
 const mediumUserId = env.MEDIUM_USER_ID;
 export const config = {
-  metadataFilePath: env.METADATA_FILE_PATH ?? 'metadata.yaml',
-  contentFilePath: env.CONTENT_FILE_PATH ?? 'content.md',
+  metadataFilePath: env.METADATA_FILE_PATH ?? './data/metadata.yaml',
+  contentFilePath: env.CONTENT_FILE_PATH ?? './data/content.md',
   mediaBaseUrl,
   medium: {
     apiUrl: `https://api.medium.com/v1/users/${mediumUserId}/posts/`,
