@@ -3,7 +3,7 @@ import {argv} from 'node:process';
 import {logger} from './config.js';
 import {publishNewPostDevTo, publishNewPostMedium} from './publish.js';
 
-logger.logOther?.('..:: Publish Post ::..');
+logger.logOther?.('..:: Content Publisher ::..');
 
 const publishWebsite = argv[argv.indexOf('-w') + 1];
 const basePath = argv[argv.indexOf('-b') + 1];
