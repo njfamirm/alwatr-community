@@ -12,6 +12,10 @@ export async function publishNewPostMedium(): Promise<string> {
   let content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
 
+  if (metadata.medium.publishStatus === 'no') {
+    logger.logProperty?.('publishNewPostMedium', 'publish_status_no');
+    return '';
+  }
 
   content = `![${metadata.title}](${config.mediaBaseUrl + metadata.coverImage})\n${content}`;
 
@@ -23,20 +27,21 @@ export async function publishNewPostMedium(): Promise<string> {
     canonicalUrl: metadata.medium.canonicalUrl,
     publishStatus: 'draft',
     license: metadata.medium.license,
-    notifyFollowers: false,
+    notifyFollowers: true,
   };
   logger.logProperty?.('publishNewPostMedium', {article: mediumArticle});
 
   const mediumResponse = await mediumPublishPost(mediumArticle, config.medium.apiToken);
 
   if (mediumResponse.status !== 201) {
+    logger.error('publishNewPostMedium', 'publish_post_failed', {mediumResponse});
     throw new Error(`medium.com response status code is ${mediumResponse.status}`);
   }
 
   const mediumResponseJson = await mediumResponse.json() as MediumPublishPostResponse;
   logger.logProperty?.('publishNewPostMedium', {mediumResponseJson});
 
-  addPostLinkToMetadata(metadataPath, metadata, mediumResponseJson.data.url, 'medium');
+  addPostLinkToMetadata(config.metadataFilePath, metadata, mediumResponseJson.data.url, 'medium');
   return mediumResponseJson.data.url;
 }
 
@@ -46,6 +51,10 @@ export async function publishNewPostDevTo(): Promise<string> {
   const content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
 
+  if (metadata.devTo.publishStatus === 'no') {
+    logger.logProperty?.('publishNewPostDevTo', 'publish_status_no');
+    return '';
+  }
 
   const devToArticle: DevToArticle = {
     title: metadata.title,
@@ -63,6 +72,7 @@ export async function publishNewPostDevTo(): Promise<string> {
   const devToResponse = await devToPublishPost(devToArticle, config.devTo.apiToken);
 
   if (devToResponse.status !== 201) {
+    logger.error('publishNewPostDevTo', 'publish_post_failed', {devToResponse});
     throw new Error(`dev.to response status code is ${devToResponse.status}`);
   }
 

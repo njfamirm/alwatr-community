@@ -6,13 +6,6 @@ import {logger} from './config.js';
 
 import type {PostMetadata} from './type.js';
 
-export function readPostMetadata(path: string): PostMetadata {
-  logger.logMethodArgs?.('readPostMetadata', {path});
-  const file = readFileSync(path, 'utf-8');
-  const yml = parse(file) as PostMetadata;
-  return yml;
-}
-
 export function addPostLinkToMetadata(
     path: string,
     metadata: PostMetadata,
@@ -28,6 +21,12 @@ export function addPostLinkToMetadata(
   }
 
   writePostMetadata(path, metadata);
+}
+
+export function readPostMetadata(path: string): PostMetadata {
+  logger.logMethodArgs?.('readPostMetadata', {path});
+  const yaml = readFileSync(path, 'utf-8');
+  return parse(yaml);
 }
 
 function writePostMetadata(path: string, metadata: PostMetadata): void {

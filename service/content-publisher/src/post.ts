@@ -13,21 +13,21 @@ export function addCoverToPost(text: string, coverURL: string): string {
   ${text}`;
 }
 
-function convertAbsoluteMediaPathToRelative(text: string, baseUrl: string): string {
-  logger.logMethodArgs?.('convertAbsoluteMediaPathToRelative', {text, baseUrl});
+function absolutePathToRelative(text: string, baseUrl: string): string {
+  logger.logMethodArgs?.('absolutePathToRelative', {text, baseUrl});
   return text.replace(/\[(.+?)\]\((\.\/.+?)\)/g, `[$1](${baseUrl}$2)`).replaceAll('/./', '/');
 }
 
-function removeFirstAndLastNewLine(text: string): string {
-  logger.logMethodArgs?.('removeFirstAndLastNewLine', {text});
+function flatNewLine(text: string): string {
+  logger.logMethodArgs?.('flatNewLine', {text});
   return text.replace(/^\n|\n$/g, '');
 }
 
 export function getPostContent(path: string): string {
   logger.logMethodArgs?.('getPostContent', {path});
   const text = readPost(path);
-  const relativePathContent = convertAbsoluteMediaPathToRelative(text, config.mediaBaseUrl);
-  const finalText = removeFirstAndLastNewLine(relativePathContent);
+  const relativePathContent = absolutePathToRelative(text, config.mediaBaseUrl);
+  const finalText = flatNewLine(relativePathContent);
 
   logger.logProperty?.('getPostContent', {finalText});
   return finalText;

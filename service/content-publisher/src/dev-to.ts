@@ -13,7 +13,10 @@ export function devToPublishPost(article: DevToArticle, apiKey: string): Promise
       'api-key': apiKey,
     },
     bodyJson: {
-      article,
+      article: {
+        published: false,
+        ...article,
+      },
     },
   });
 }
