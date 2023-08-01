@@ -20,6 +20,7 @@
 
     // service
     {"path": "service/apod-crawler"},
+    {"path": "service/divar-crawler"},
 
     // uniquely
     {"path": "uniquely/day-countdown-bot"}
