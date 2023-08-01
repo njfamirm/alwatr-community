@@ -1,18 +1,19 @@
 import {config, logger} from './config.js';
 import {devToPublishPost} from './dev-to.js';
 import {mediumPublishPost} from './medium.js';
-import {readPostMetadata} from './metadata.js';
+import {addPostLinkToMetadata, readPostMetadata} from './metadata.js';
 import {getPostContent} from './post.js';
 
-import type {DevToArticle, MediumArticle} from './type.js';
+import type {DevToArticle, DevToPublishPostResponse, MediumArticle, MediumPublishPostResponse} from './type.js';
 
-export async function publishNewPostMedium(basePath: string): Promise<void> {
+export async function publishNewPostMedium(basePath: string): Promise<string> {
   logger.logMethod?.('publishNewPostMedium');
 
+  const metadataPath = basePath + config.metadataFilePath;
   let content = getPostContent(basePath + config.contentFilePath);
-  const metadata = readPostMetadata(basePath + config.metadataFilePath, config.mediaBaseUrl);
+  const metadata = readPostMetadata(metadataPath);
 
-  content = `![${metadata.title}](${metadata.coverImage})\n${content}`;
+  content = `![${metadata.title}](${config.mediaBaseUrl + metadata.coverImage})\n${content}`;
 
   const mediumArticle: MediumArticle = {
     title: metadata.title,
@@ -27,14 +28,24 @@ export async function publishNewPostMedium(basePath: string): Promise<void> {
   logger.logProperty?.('publishNewPostMedium', {article: mediumArticle});
 
   const mediumResponse = await mediumPublishPost(mediumArticle, config.medium.mediumApiToken);
-  logger.logProperty?.('publishNewPostMedium', {response: await mediumResponse.json()});
+
+  if (mediumResponse.status !== 201) {
+    throw new Error(`medium.com response status code is ${mediumResponse.status}`);
+  }
+
+  const mediumResponseJson = await mediumResponse.json() as MediumPublishPostResponse;
+  logger.logProperty?.('publishNewPostMedium', {mediumResponseJson});
+
+  addPostLinkToMetadata(metadataPath, metadata, mediumResponseJson.data.url, 'medium');
+  return mediumResponseJson.data.url;
 }
 
-export async function publishNewPostDevTo(basePath: string): Promise<void> {
+export async function publishNewPostDevTo(basePath: string): Promise<string> {
   logger.logMethod?.('publishNewPostDevTo');
 
+  const metadataPath = basePath + config.metadataFilePath;
   const content = getPostContent(basePath + config.contentFilePath);
-  const metadata = readPostMetadata(basePath + config.metadataFilePath, config.mediaBaseUrl);
+  const metadata = readPostMetadata(metadataPath);
 
   const devToArticle: DevToArticle = {
     title: metadata.title,
@@ -42,7 +53,7 @@ export async function publishNewPostDevTo(basePath: string): Promise<void> {
     tags: metadata.tags,
     canonical_url: metadata.devTo.canonicalUrl,
     description: metadata.description,
-    main_image: metadata.coverImage,
+    main_image: config.mediaBaseUrl + metadata.coverImage,
     organization_id: metadata.devTo.organizationId,
     series: metadata.devTo.series,
     body_markdown: content,
@@ -50,5 +61,14 @@ export async function publishNewPostDevTo(basePath: string): Promise<void> {
   logger.logProperty?.('publishNewPostDevTo', {article: devToArticle});
 
   const devToResponse = await devToPublishPost(devToArticle, config.devTo.devToApiToken);
-  logger.logProperty?.('publishNewPostDevTo', {response: await devToResponse.json()});
+
+  if (devToResponse.status !== 201) {
+    throw new Error(`dev.to response status code is ${devToResponse.status}`);
+  }
+
+  const devToResponseJson = await devToResponse.json() as DevToPublishPostResponse;
+  logger.logProperty?.('publishNewPostDevTo', {devToResponseJson});
+
+  addPostLinkToMetadata(metadataPath, metadata, devToResponseJson.url, 'dev-to');
+  return devToResponseJson.url;
 }
