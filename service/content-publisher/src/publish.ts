@@ -13,8 +13,12 @@ export async function publishNewPostMedium(): Promise<string> {
   const metadata = readPostMetadata(config.metadataFilePath);
   metadata.medium ??= {};
 
-  if (metadata.medium?.publishStatus === 'no') {
-    logger.logProperty?.('publishNewPostMedium', 'publish_status_no');
+  if (metadata.medium.publishStatus === 'no') {
+    logger.incident?.('publishNewPostMedium', 'publish_status_no', 'Publish status is `no`');
+    return '';
+  }
+  if (metadata.medium.publishStatus === 'public') {
+    logger.error?.('publishNewPostMedium', 'fuck_medium', 'Fucking medium does not support update post!');
     return '';
   }
 
@@ -25,9 +29,9 @@ export async function publishNewPostMedium(): Promise<string> {
     contentFormat: 'markdown',
     content,
     tags: metadata.medium.tags,
-    canonicalUrl: metadata.medium?.canonicalUrl,
-    publishStatus: 'draft',
-    license: metadata.medium?.license,
+    canonicalUrl: metadata.medium.canonicalUrl,
+    publishStatus: metadata.medium.publishStatus ?? 'draft',
+    license: metadata.medium.license,
     notifyFollowers: true,
   };
   logger.logProperty?.('publishNewPostMedium', {article: mediumArticle});
@@ -54,7 +58,7 @@ export async function publishPostToDevTo(): Promise<string> {
   metadata.devTo ??= {};
 
   if (metadata.devTo?.publishStatus === 'no') {
-    logger.logProperty?.('publishPostToDevTo', 'publish_status_no');
+    logger.incident?.('publishPostToDevTo', 'publish_status_no', 'Publish status is `no`');
     return '';
   }
 
