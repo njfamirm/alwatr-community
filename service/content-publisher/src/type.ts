@@ -10,6 +10,7 @@ export interface PostMetadata extends StringifyableRecord {
     postId?: number,
     url?: string,
     publishStatus?: 'public' | 'draft' | 'no',
+    tags?: string[],
     series?: string,
     canonicalUrl?: string,
     organizationId?: number
@@ -18,6 +19,7 @@ export interface PostMetadata extends StringifyableRecord {
     url?: string,
     canonicalUrl?: string,
     publishStatus?: 'public' | 'draft' | 'unlisted' | 'no',
+    tags?: string[],
     license?: MediumArticle['license'],
   }
 }
