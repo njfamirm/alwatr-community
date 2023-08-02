@@ -6,14 +6,15 @@ export interface PostMetadata extends StringifyableRecord {
   description?: string,
   coverImage?: string,
   tags?: string[],
-  devTo: {
-    url: string,
+  devTo?: {
+    postId?: number,
+    url?: string,
     publishStatus?: 'public' | 'draft' | 'no',
     series?: string,
     canonicalUrl?: string,
     organizationId?: number
   },
-  medium: {
+  medium?: {
     url?: string,
     canonicalUrl?: string,
     publishStatus?: 'public' | 'draft' | 'unlisted' | 'no',

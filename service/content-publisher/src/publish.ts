@@ -1,7 +1,7 @@
 import {config, logger} from './config.js';
-import {devToPublishPost} from './dev-to.js';
+import {devToPublishPost, devToUpdatePost} from './dev-to.js';
 import {mediumPublishPost} from './medium.js';
-import {addPostLinkToMetadata, readPostMetadata} from './metadata.js';
+import {updatePostMetadata as updateMetadata, readPostMetadata} from './metadata.js';
 import {getPostContent} from './post.js';
 
 import type {DevToArticle, DevToPublishPostResponse, MediumArticle, MediumPublishPostResponse} from './type.js';
@@ -12,7 +12,7 @@ export async function publishNewPostMedium(): Promise<string> {
   let content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
 
-  if (metadata.medium.publishStatus === 'no') {
+  if (metadata.medium?.publishStatus === 'no') {
     logger.logProperty?.('publishNewPostMedium', 'publish_status_no');
     return '';
   }
@@ -24,9 +24,9 @@ export async function publishNewPostMedium(): Promise<string> {
     contentFormat: 'markdown',
     content,
     tags: metadata.tags,
-    canonicalUrl: metadata.medium.canonicalUrl,
+    canonicalUrl: metadata.medium?.canonicalUrl,
     publishStatus: 'draft',
-    license: metadata.medium.license,
+    license: metadata.medium?.license,
     notifyFollowers: true,
   };
   logger.logProperty?.('publishNewPostMedium', {article: mediumArticle});
@@ -41,19 +41,25 @@ export async function publishNewPostMedium(): Promise<string> {
   const mediumResponseJson = await mediumResponse.json() as MediumPublishPostResponse;
   logger.logProperty?.('publishNewPostMedium', {mediumResponseJson});
 
-  addPostLinkToMetadata(config.metadataFilePath, metadata, mediumResponseJson.data.url, 'medium');
+  updateMetadata(config.metadataFilePath, {medium: {url: mediumResponseJson.data.url}});
   return mediumResponseJson.data.url;
 }
 
-export async function publishNewPostDevTo(): Promise<string> {
-  logger.logMethod?.('publishNewPostDevTo');
+export async function publishPostToDevTo(): Promise<string> {
+  logger.logMethod?.('publishPostToDevTo');
 
   const content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
 
-  if (metadata.devTo.publishStatus === 'no') {
-    logger.logProperty?.('publishNewPostDevTo', 'publish_status_no');
+  metadata.devTo ??= {};
+
+  if (metadata.devTo?.publishStatus === 'no') {
+    logger.logProperty?.('publishPostToDevTo', 'publish_status_no');
     return '';
+  }
+
+  if (!metadata.devTo.canonicalUrl) {
+    metadata.devTo.canonicalUrl = metadata.medium?.url;
   }
 
   const devToArticle: DevToArticle = {
@@ -67,18 +73,25 @@ export async function publishNewPostDevTo(): Promise<string> {
     series: metadata.devTo.series,
     body_markdown: content,
   };
-  logger.logProperty?.('publishNewPostDevTo', {article: devToArticle});
+  logger.logProperty?.('publishPostToDevTo', {article: devToArticle});
 
-  const devToResponse = await devToPublishPost(devToArticle, config.devTo.apiToken);
+  const postId = metadata.devTo.postId;
+  let devToResponse;
+  if (!postId) {
+    devToResponse = await devToPublishPost(devToArticle, config.devTo.apiToken);
+  }
+  else {
+    devToResponse = await devToUpdatePost(devToArticle, postId, config.devTo.apiToken);
+  }
 
-  if (devToResponse.status !== 201) {
-    logger.error('publishNewPostDevTo', 'publish_post_failed', {devToResponse});
+  if (devToResponse.status !== 200) {
+    logger.error('publishPostToDevTo', 'publish_post_failed', {devToResponse});
     throw new Error(`dev.to response status code is ${devToResponse.status}`);
   }
 
   const devToResponseJson = await devToResponse.json() as DevToPublishPostResponse;
-  logger.logProperty?.('publishNewPostDevTo', {devToResponseJson});
+  logger.logProperty?.('publishPostToDevTo', {devToResponseJson});
 
-  addPostLinkToMetadata(config.metadataFilePath, metadata, devToResponseJson.url, 'dev-to');
+  updateMetadata(config.metadataFilePath, {devTo: {url: devToResponseJson.url, postId: devToResponseJson.id}});
   return devToResponseJson.url;
 }
