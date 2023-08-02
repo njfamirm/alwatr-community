@@ -1,7 +1,5 @@
 import {readFileSync, writeFileSync} from 'node:fs';
 
-import {parse, stringify} from 'yaml';
-
 import {logger} from './config.js';
 
 import type {PostMetadata} from './type.js';
@@ -18,11 +16,11 @@ export function updatePostMetadata(path: string, newMetadata: Partial<PostMetada
 
 export function readPostMetadata(path: string): PostMetadata {
   logger.logMethodArgs?.('readPostMetadata', {path});
-  const yaml = readFileSync(path, 'utf-8');
-  return parse(yaml);
+  const json = readFileSync(path, 'utf-8');
+  return JSON.parse(json);
 }
 
 function writePostMetadata(path: string, metadata: PostMetadata): void {
-  logger.logMethodArgs?.('writePostMetadata', {path, metadata: stringify(metadata)});
-  writeFileSync(path, stringify(metadata));
+  logger.logMethodArgs?.('writePostMetadata', {path, metadata});
+  writeFileSync(path, JSON.stringify(metadata, null, 2));
 }

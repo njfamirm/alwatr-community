@@ -12,7 +12,7 @@ if (mediaBaseUrl == null) {
 
 const mediumUserId = env.MEDIUM_USER_ID;
 export const config = {
-  metadataFilePath: env.METADATA_FILE_PATH ?? './data/metadata.yaml',
+  metadataFilePath: env.METADATA_FILE_PATH ?? './data/metadata.json',
   contentFilePath: env.CONTENT_FILE_PATH ?? './data/content.md',
   mediaBaseUrl,
   medium: {
