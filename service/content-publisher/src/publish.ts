@@ -1,7 +1,7 @@
 import {config, logger} from './config.js';
-import {devToGetPostId, devToPublishPost, devToUpdatePost} from './dev-to.js';
+import {devToPublishPost, devToUpdatePost} from './dev-to.js';
 import {mediumPublishPost} from './medium.js';
-import {addPostLinkToMetadata, readPostMetadata} from './metadata.js';
+import {addPostLinkToMetadata as updateMetadata, readPostMetadata} from './metadata.js';
 import {getPostContent} from './post.js';
 
 import type {DevToArticle, DevToPublishPostResponse, MediumArticle, MediumPublishPostResponse} from './type.js';
@@ -41,7 +41,7 @@ export async function publishNewPostMedium(): Promise<string> {
   const mediumResponseJson = await mediumResponse.json() as MediumPublishPostResponse;
   logger.logProperty?.('publishNewPostMedium', {mediumResponseJson});
 
-  addPostLinkToMetadata(config.metadataFilePath, metadata, mediumResponseJson.data.url, 'medium');
+  updateMetadata(config.metadataFilePath, metadata, {link: mediumResponseJson.data.url}, 'medium');
   return mediumResponseJson.data.url;
 }
 
@@ -51,31 +51,37 @@ export async function publishPostToDevTo(): Promise<string> {
   const content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
 
-  if (metadata.devTo?.publishStatus === 'no') {
+  metadata.devTo ??= {};
+
+  if (metadata.devTo.publishStatus === 'no') {
     logger.logProperty?.('publishPostToDevTo', 'publish_status_no');
     return '';
+  }
+
+  if (!metadata.devTo.canonicalUrl) {
+    metadata.devTo.canonicalUrl = metadata.medium?.url;
   }
 
   const devToArticle: DevToArticle = {
     title: metadata.title,
     published: false,
     tags: metadata.tags,
-    canonical_url: metadata.devTo?.canonicalUrl ?? metadata.medium?.url,
+    canonical_url: metadata.devTo.canonicalUrl,
     description: metadata.description,
     main_image: config.mediaBaseUrl + metadata.coverImage,
-    organization_id: metadata.devTo?.organizationId,
-    series: metadata.devTo?.series,
+    organization_id: metadata.devTo.organizationId,
+    series: metadata.devTo.series,
     body_markdown: content,
   };
   logger.logProperty?.('publishPostToDevTo', {article: devToArticle});
 
-  const url = metadata.devTo?.url;
+  const postId = metadata.devTo.postId;
   let devToResponse;
-  if (!url) {
+  if (!postId) {
     devToResponse = await devToPublishPost(devToArticle, config.devTo.apiToken);
   }
   else {
-    devToResponse = await devToUpdatePost(devToArticle, devToGetPostId(url), config.devTo.apiToken);
+    devToResponse = await devToUpdatePost(devToArticle, postId, config.devTo.apiToken);
   }
 
   if (devToResponse.status !== 201) {
@@ -86,6 +92,7 @@ export async function publishPostToDevTo(): Promise<string> {
   const devToResponseJson = await devToResponse.json() as DevToPublishPostResponse;
   logger.logProperty?.('publishPostToDevTo', {devToResponseJson});
 
-  addPostLinkToMetadata(config.metadataFilePath, metadata, devToResponseJson.url, 'dev-to');
+  updateMetadata(config.metadataFilePath, metadata,
+      {link: devToResponseJson.url, postId: devToResponseJson.id}, 'dev-to');
   return devToResponseJson.url;
 }

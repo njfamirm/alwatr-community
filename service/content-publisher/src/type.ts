@@ -7,7 +7,8 @@ export interface PostMetadata extends StringifyableRecord {
   coverImage?: string,
   tags?: string[],
   devTo?: {
-    url: string,
+    postId?: number,
+    url?: string,
     publishStatus?: 'public' | 'draft' | 'no',
     series?: string,
     canonicalUrl?: string,

@@ -8,19 +8,22 @@ import type {PostMetadata} from './type.js';
 
 export function addPostLinkToMetadata(
     path: string,
-    metadata: PostMetadata,
-    link: string,
+    oldMetadata: PostMetadata,
+    metadata: {link: string, postId?: number},
     website: 'dev-to' | 'medium',
 ): void {
-  logger.logMethodArgs?.('addPostLinkToMetadata', {metadata, link});
+  logger.logMethodArgs?.('updateMetadata', {metadata});
   if (website === 'medium') {
-    metadata.medium.url = link;
+    oldMetadata.medium ??= {};
+    oldMetadata.medium.url = metadata.link;
   }
   else {
-    metadata.devTo.url = link;
+    oldMetadata.devTo ??= {};
+    oldMetadata.devTo.url = metadata.link;
+    oldMetadata.devTo.postId = metadata.postId;
   }
 
-  writePostMetadata(path, metadata);
+  writePostMetadata(path, oldMetadata);
 }
 
 export function readPostMetadata(path: string): PostMetadata {

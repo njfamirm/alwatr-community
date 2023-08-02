@@ -21,7 +21,7 @@ export function devToPublishPost(article: DevToArticle, apiKey: string): Promise
   });
 }
 
-export function devToUpdatePost(article: DevToArticle, postId: string, apiKey: string): Promise<Response> {
+export function devToUpdatePost(article: DevToArticle, postId: number, apiKey: string): Promise<Response> {
   logger.logMethodArgs?.('devToUpdatePost', {article, postId});
   return fetch({
     url: config.devTo.apiUrl + postId,
@@ -33,9 +33,4 @@ export function devToUpdatePost(article: DevToArticle, postId: string, apiKey: s
       article,
     },
   });
-}
-
-export function devToGetPostId(url: string): string {
-  const urlParts = url.split('/');
-  return urlParts[urlParts.length - 1];
 }
