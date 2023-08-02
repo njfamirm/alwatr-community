@@ -1,7 +1,7 @@
 import {config, logger} from './config.js';
 import {devToPublishPost, devToUpdatePost} from './dev-to.js';
 import {mediumPublishPost} from './medium.js';
-import {addPostLinkToMetadata as updateMetadata, readPostMetadata} from './metadata.js';
+import {updatePostMetadata as updateMetadata, readPostMetadata} from './metadata.js';
 import {getPostContent} from './post.js';
 
 import type {DevToArticle, DevToPublishPostResponse, MediumArticle, MediumPublishPostResponse} from './type.js';
@@ -41,7 +41,7 @@ export async function publishNewPostMedium(): Promise<string> {
   const mediumResponseJson = await mediumResponse.json() as MediumPublishPostResponse;
   logger.logProperty?.('publishNewPostMedium', {mediumResponseJson});
 
-  updateMetadata(config.metadataFilePath, metadata, {link: mediumResponseJson.data.url}, 'medium');
+  updateMetadata(config.metadataFilePath, {medium: {url: mediumResponseJson.data.url}});
   return mediumResponseJson.data.url;
 }
 
@@ -53,7 +53,7 @@ export async function publishPostToDevTo(): Promise<string> {
 
   metadata.devTo ??= {};
 
-  if (metadata.devTo.publishStatus === 'no') {
+  if (metadata.devTo?.publishStatus === 'no') {
     logger.logProperty?.('publishPostToDevTo', 'publish_status_no');
     return '';
   }
@@ -84,7 +84,7 @@ export async function publishPostToDevTo(): Promise<string> {
     devToResponse = await devToUpdatePost(devToArticle, postId, config.devTo.apiToken);
   }
 
-  if (devToResponse.status !== 201) {
+  if (devToResponse.status !== 200) {
     logger.error('publishPostToDevTo', 'publish_post_failed', {devToResponse});
     throw new Error(`dev.to response status code is ${devToResponse.status}`);
   }
@@ -92,7 +92,6 @@ export async function publishPostToDevTo(): Promise<string> {
   const devToResponseJson = await devToResponse.json() as DevToPublishPostResponse;
   logger.logProperty?.('publishPostToDevTo', {devToResponseJson});
 
-  updateMetadata(config.metadataFilePath, metadata,
-      {link: devToResponseJson.url, postId: devToResponseJson.id}, 'dev-to');
+  updateMetadata(config.metadataFilePath, {devTo: {url: devToResponseJson.url, postId: devToResponseJson.id}});
   return devToResponseJson.url;
 }
