@@ -12,7 +12,7 @@ export async function publishNewPostMedium(): Promise<string> {
   let content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
 
-  if (metadata.medium.publishStatus === 'no') {
+  if (metadata.medium?.publishStatus === 'no') {
     logger.logProperty?.('publishNewPostMedium', 'publish_status_no');
     return '';
   }
@@ -51,7 +51,7 @@ export async function publishNewPostDevTo(): Promise<string> {
   const content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
 
-  if (metadata.devTo.publishStatus === 'no') {
+  if (metadata.devTo?.publishStatus === 'no') {
     logger.logProperty?.('publishNewPostDevTo', 'publish_status_no');
     return '';
   }
