@@ -84,7 +84,7 @@ export async function publishPostToDevTo(): Promise<string> {
     devToResponse = await devToUpdatePost(devToArticle, postId, config.devTo.apiToken);
   }
 
-  if (devToResponse.status !== 200) {
+  if (devToResponse.status !== 200 && devToResponse.status !== 201) {
     logger.error('publishPostToDevTo', 'publish_post_failed', {devToResponse});
     throw new Error(`dev.to response status code is ${devToResponse.status}`);
   }
