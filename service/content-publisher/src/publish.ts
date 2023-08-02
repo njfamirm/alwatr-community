@@ -1,5 +1,5 @@
 import {config, logger} from './config.js';
-import {devToPublishPost} from './dev-to.js';
+import {devToGetPostId, devToPublishPost, devToUpdatePost} from './dev-to.js';
 import {mediumPublishPost} from './medium.js';
 import {addPostLinkToMetadata, readPostMetadata} from './metadata.js';
 import {getPostContent} from './post.js';
@@ -24,9 +24,9 @@ export async function publishNewPostMedium(): Promise<string> {
     contentFormat: 'markdown',
     content,
     tags: metadata.tags,
-    canonicalUrl: metadata.medium.canonicalUrl,
+    canonicalUrl: metadata.medium?.canonicalUrl,
     publishStatus: 'draft',
-    license: metadata.medium.license,
+    license: metadata.medium?.license,
     notifyFollowers: true,
   };
   logger.logProperty?.('publishNewPostMedium', {article: mediumArticle});
@@ -45,14 +45,14 @@ export async function publishNewPostMedium(): Promise<string> {
   return mediumResponseJson.data.url;
 }
 
-export async function publishNewPostDevTo(): Promise<string> {
-  logger.logMethod?.('publishNewPostDevTo');
+export async function publishPostToDevTo(): Promise<string> {
+  logger.logMethod?.('publishPostToDevTo');
 
   const content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
 
   if (metadata.devTo?.publishStatus === 'no') {
-    logger.logProperty?.('publishNewPostDevTo', 'publish_status_no');
+    logger.logProperty?.('publishPostToDevTo', 'publish_status_no');
     return '';
   }
 
@@ -60,24 +60,31 @@ export async function publishNewPostDevTo(): Promise<string> {
     title: metadata.title,
     published: false,
     tags: metadata.tags,
-    canonical_url: metadata.devTo.canonicalUrl,
+    canonical_url: metadata.devTo?.canonicalUrl ?? metadata.medium?.url,
     description: metadata.description,
     main_image: config.mediaBaseUrl + metadata.coverImage,
-    organization_id: metadata.devTo.organizationId,
-    series: metadata.devTo.series,
+    organization_id: metadata.devTo?.organizationId,
+    series: metadata.devTo?.series,
     body_markdown: content,
   };
-  logger.logProperty?.('publishNewPostDevTo', {article: devToArticle});
+  logger.logProperty?.('publishPostToDevTo', {article: devToArticle});
 
-  const devToResponse = await devToPublishPost(devToArticle, config.devTo.apiToken);
+  const url = metadata.devTo?.url;
+  let devToResponse;
+  if (!url) {
+    devToResponse = await devToPublishPost(devToArticle, config.devTo.apiToken);
+  }
+  else {
+    devToResponse = await devToUpdatePost(devToArticle, devToGetPostId(url), config.devTo.apiToken);
+  }
 
   if (devToResponse.status !== 201) {
-    logger.error('publishNewPostDevTo', 'publish_post_failed', {devToResponse});
+    logger.error('publishPostToDevTo', 'publish_post_failed', {devToResponse});
     throw new Error(`dev.to response status code is ${devToResponse.status}`);
   }
 
   const devToResponseJson = await devToResponse.json() as DevToPublishPostResponse;
-  logger.logProperty?.('publishNewPostDevTo', {devToResponseJson});
+  logger.logProperty?.('publishPostToDevTo', {devToResponseJson});
 
   addPostLinkToMetadata(config.metadataFilePath, metadata, devToResponseJson.url, 'dev-to');
   return devToResponseJson.url;
