@@ -11,6 +11,7 @@ export async function publishNewPostMedium(): Promise<string> {
 
   let content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
+  metadata.medium ??= {};
 
   if (metadata.medium?.publishStatus === 'no') {
     logger.logProperty?.('publishNewPostMedium', 'publish_status_no');
@@ -23,7 +24,7 @@ export async function publishNewPostMedium(): Promise<string> {
     title: metadata.title,
     contentFormat: 'markdown',
     content,
-    tags: metadata.tags,
+    tags: metadata.medium.tags,
     canonicalUrl: metadata.medium?.canonicalUrl,
     publishStatus: 'draft',
     license: metadata.medium?.license,
@@ -50,7 +51,6 @@ export async function publishPostToDevTo(): Promise<string> {
 
   const content = getPostContent(config.contentFilePath);
   const metadata = readPostMetadata(config.metadataFilePath);
-
   metadata.devTo ??= {};
 
   if (metadata.devTo?.publishStatus === 'no') {
@@ -65,7 +65,7 @@ export async function publishPostToDevTo(): Promise<string> {
   const devToArticle: DevToArticle = {
     title: metadata.title,
     published: false,
-    tags: metadata.tags,
+    tags: metadata.devTo.tags,
     canonical_url: metadata.devTo.canonicalUrl,
     description: metadata.description,
     main_image: config.mediaBaseUrl + metadata.coverImage,
