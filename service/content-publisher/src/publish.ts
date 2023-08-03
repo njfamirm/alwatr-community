@@ -68,7 +68,7 @@ export async function publishPostToDevTo(): Promise<string> {
 
   const devToArticle: DevToArticle = {
     title: metadata.title,
-    published: false,
+    published: metadata.published ?? false,
     tags: metadata.devTo.tags,
     canonical_url: metadata.devTo.canonicalUrl,
     description: metadata.description,
