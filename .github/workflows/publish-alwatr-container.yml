@@ -40,10 +40,6 @@ jobs:
             source: service/apod-crawler
             dockerfile: cloud/container/alwatr-services.dockerfile
             description: Alwatr Nasa APOD crawler.
-          - image: content-publisher
-            source: service/content-publisher
-            dockerfile: cloud/container/alwatr-services.dockerfile
-            description: Alwatr content publisher to medium and dev-to.
 
           # uniquely
           - image: day-countdown-bot
