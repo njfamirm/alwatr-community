@@ -11,6 +11,14 @@ export function updatePostMetadata(path: string, newMetadata: Partial<PostMetada
   writePostMetadata(path, {
     ...metadata,
     ...newMetadata,
+    medium: {
+      ...metadata.medium,
+      ...newMetadata.medium,
+    },
+    devTo: {
+      ...metadata.devTo,
+      ...newMetadata.devTo,
+    },
   });
 }
 
