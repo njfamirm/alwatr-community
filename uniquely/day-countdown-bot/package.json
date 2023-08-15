@@ -46,7 +46,7 @@
     "@grammyjs/types": "^3.0.3",
     "@types/moment-jalaali": "^0.7.5",
     "@types/node": "^20.4.6",
-    "esbuild": "^0.18.17",
+    "esbuild": "^0.19.2",
     "moment-jalaali": "^0.10.0",
     "nodemon": "^3.0.1",
     "npm-run-all": "^4.1.5",
