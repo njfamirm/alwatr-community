@@ -7,7 +7,7 @@
     "version": {
       "conventionalCommits": true,
       "changelogPreset": "angular",
-      "message": "release: %s",
+      "message": "release: %v",
       "forcePublish": true,
       "push": true
     },
