@@ -56,7 +56,7 @@ __metadata:
     "@alwatr/nano-server": ^1.0.0
     "@alwatr/storage-engine": ^1.0.1
     "@alwatr/type": ^1.0.0
-    "@grammyjs/types": ^3.0.3
+    "@grammyjs/types": ^3.2.1
     "@types/moment-jalaali": ^0.7.5
     "@types/node": ^20.4.6
     esbuild: ^0.18.17
@@ -112,7 +112,7 @@ __metadata:
     "@alwatr/storage-client": ^1.0.1
     "@alwatr/storage-engine": ^1.0.1
     "@alwatr/type": ^1.0.0
-    "@grammyjs/types": ^3.0.3
+    "@grammyjs/types": ^3.2.1
     tslib: ^2.6.1
   languageName: unknown
   linkType: soft
@@ -2186,10 +2186,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grammyjs/types@npm:^3.0.3":
-  version: 3.1.2
-  resolution: "@grammyjs/types@npm:3.1.2"
-  checksum: afbf678ca14079e16d37c7b721c90eb90a5d18110b331e49980b4f88966c85995ce1b97a0c64226949f1bdd208ce8b62b348a9b2d2197c2c98ec1925697e752a
+"@grammyjs/types@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "@grammyjs/types@npm:3.2.1"
+  checksum: 214ea82063b0b080c80bb3f9d5d0da3043186eba67d038ff18aeb9430dfd06a461f30198b7938aca05f626068a853016e28fa4b4fafd9c21e5a1ca38d027196a
   languageName: node
   linkType: hard
 
