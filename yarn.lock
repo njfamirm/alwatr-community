@@ -102,7 +102,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@alwatr-community/telegram@^0.1.0, @alwatr-community/telegram@workspace:core/telegram":
+"@alwatr-community/telegram@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@alwatr-community/telegram@npm:0.1.0"
+  dependencies:
+    "@alwatr/fetch": ^1.0.0
+    "@alwatr/logger": ^1.0.0
+    "@alwatr/nano-server": ^1.0.0
+    "@alwatr/storage-client": ^1.0.1
+    "@alwatr/storage-engine": ^1.0.1
+    tslib: ^2.6.1
+  checksum: 424c2c5ab551cb4cf69734f851ac396a524f3c0780f054cdaaa94a708668d9477e678ef6b8c57447b907813c6abd9019d7156ff0273742d15fee6d3697434948
+  languageName: node
+  linkType: hard
+
+"@alwatr-community/telegram@workspace:core/telegram":
   version: 0.0.0-use.local
   resolution: "@alwatr-community/telegram@workspace:core/telegram"
   dependencies:
@@ -141,6 +155,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@alwatr/logger@npm:^1.0.0, @alwatr/logger@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@alwatr/logger@npm:1.1.0"
+  dependencies:
+    "@alwatr/type": ^1.1.0
+    tslib: ^2.6.2
+  checksum: 18a07b2690b8ce4ff3a43032e3796411bbc47d732e33141d7b36386060133a1ab60a5787308c374982b337d810761798b55ff5a5780770bec3176d5e20c782b4
+  languageName: node
+  linkType: hard
+
 "@alwatr/logger@npm:^1.0.1":
   version: 1.0.1
   resolution: "@alwatr/logger@npm:1.0.1"
@@ -148,16 +172,6 @@ __metadata:
     "@alwatr/type": ^1.0.1
     tslib: ^2.5.3
   checksum: f438d2eb23f7d6d645288c25417dee395f83af34f2839bcdbca542ec4008028f5b01093ac41aa49b9aad9c60d63db8c9514e1a43faf7afb1340d2532f5af2ca4
-  languageName: node
-  linkType: hard
-
-"@alwatr/logger@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@alwatr/logger@npm:1.1.0"
-  dependencies:
-    "@alwatr/type": ^1.1.0
-    tslib: ^2.6.2
-  checksum: 18a07b2690b8ce4ff3a43032e3796411bbc47d732e33141d7b36386060133a1ab60a5787308c374982b337d810761798b55ff5a5780770bec3176d5e20c782b4
   languageName: node
   linkType: hard
 
@@ -12075,7 +12089,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.6.2":
+"tslib@npm:^2.6.1, tslib@npm:^2.6.2":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
