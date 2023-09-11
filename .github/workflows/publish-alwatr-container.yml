@@ -89,7 +89,7 @@ jobs:
 
 
       - name: 🏗 Setup nodejs
-        uses: actions/setup-node@v3.7.0
+        uses: actions/setup-node@v3.8.1
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
@@ -107,7 +107,7 @@ jobs:
 
       - name: 🚀 Build and push container image
         id: build-and-push
-        uses: docker/build-push-action@v4.1.1
+        uses: docker/build-push-action@v4.2.1
         with:
           push: ${{ github.event_name != 'pull_request' }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
