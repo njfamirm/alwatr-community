@@ -5,13 +5,9 @@ name: Release on Github
 on:
   workflow_dispatch:
 
-  release:
-    types:
-      - created
-
   push:
     tags:
-      - '*@v*.*.*'
+      - '**'
 
 env:
   NODE_VERSION: lts/*
