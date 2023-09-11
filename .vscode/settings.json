@@ -68,5 +68,9 @@
   },
   "eslint.nodePath": ".yarn/sdks",
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "githubPullRequests.ignoredPullRequestBranches": [
+    "main",
+    "next"
+  ]
 }
