@@ -9,6 +9,8 @@
       "changelogPreset": "angular",
       "message": "release",
       "forcePublish": true,
+      "signGitTag": true,
+      "progress": true,
       "push": true
     },
     "publish": {
