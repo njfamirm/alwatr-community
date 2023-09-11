@@ -5,7 +5,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # 0.1.0 (2023-07-25)
 
-
 ### Bug Fixes
 
 * clean command ([b7b149b](https://github.com/njfamirm/alwatr-community/commit/b7b149b502ec876069bb2bb5fdb1fe284678c1bb))
@@ -16,7 +15,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * set correct field in package.json ([e837b3a](https://github.com/njfamirm/alwatr-community/commit/e837b3a6ac7a596f80ae6d2bc24f9aedc91f89ba))
 * versions ([4315d64](https://github.com/njfamirm/alwatr-community/commit/4315d643a5cb99703b80bb1047358b152c7ad742))
 * **workflow:** add coreect path for package ([5f8d643](https://github.com/njfamirm/alwatr-community/commit/5f8d6435e6a2f2b0d2d2324305447e4fdbe412ca))
-
 
 ### Features
 

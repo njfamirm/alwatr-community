@@ -2,11 +2,7 @@
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "version": "0.1.0",
   "npmClient": "yarn",
-  "packages": [
-    "core/*",
-    "service/*",
-    "uniquely/*"
-  ],
+  "packages": ["core/*", "service/*", "uniquely/*"],
   "command": {
     "version": {
       "conventionalCommits": true,
@@ -17,9 +13,7 @@
     },
     "publish": {
       "conventionalCommits": true,
-      "ignoreChanges": [
-        "*.md"
-      ]
+      "ignoreChanges": ["*.md"]
     },
     "run": {
       "stream": true
