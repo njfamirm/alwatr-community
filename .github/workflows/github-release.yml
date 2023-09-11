@@ -9,9 +9,6 @@ on:
     tags:
       - '**'
 
-env:
-  NODE_VERSION: lts/*
-
 jobs:
   publish-npm:
     if: github.repository_owner == 'njfamirm'
@@ -20,8 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
-      security-events: write
+      contents: write
 
     steps:
       - name: ⤵️ Checkout repository
@@ -29,5 +25,3 @@ jobs:
 
       - name: 🚀 Release
         uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
