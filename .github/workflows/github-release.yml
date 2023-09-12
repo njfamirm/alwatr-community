@@ -10,10 +10,10 @@ on:
       - '**'
 
 jobs:
-  publish-npm:
+  release:
     if: github.repository_owner == 'njfamirm'
 
-    name: Publish NPM
+    name: Release on Github
     runs-on: ubuntu-latest
 
     permissions:
@@ -29,3 +29,4 @@ jobs:
         with:
           generate_release_notes: true
           discussion_category_name: Announcements
+          token: ${{ secrets.BOT_TOKEN }}
