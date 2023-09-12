@@ -56,8 +56,8 @@ jobs:
             name=${{env.REGISTRY}}/${{github.repository_owner}}/${{matrix.image}},enable=true
 
           labels: |
-            org.opencontainers.image.authors=Ali.Mihandoost@gmail.com
-            org.opencontainers.image.title=@Alwatr/${{matrix.image}}
+            org.opencontainers.image.authors=njfamirm@gmail.com
+            org.opencontainers.image.title=@alwatr-community/${{matrix.image}}
             org.opencontainers.image.description=${{matrix.description}}
 
           tags: |

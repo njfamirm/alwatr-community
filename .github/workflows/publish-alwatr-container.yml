@@ -7,7 +7,7 @@ on:
 
   push:
     tags:
-      - '**'
+      - 's**'
     branches:
       - main
 
@@ -75,8 +75,8 @@ jobs:
           images: name=${{ env.REGISTRY }}/${{ env.USERNAME }}/${{ matrix.image }},enable=true
 
           labels: |
-            org.opencontainers.image.authors=Ali.Mihandoost@gmail.com
-            org.opencontainers.image.title=@alwatr/${{ matrix.image }}
+            org.opencontainers.image.authors=njfamirm@gmail.com
+            org.opencontainers.image.title=@alwatr-community/${{ matrix.image }}
             org.opencontainers.image.description=${{ matrix.description }}
 
           tags: |
@@ -85,7 +85,6 @@ jobs:
             type=semver,enable=true,pattern={{version}}
             type=ref,enable=true,event=pr
             type=ref,enable=true,event=branch
-
 
       - name: 🏗 Setup nodejs
         uses: actions/setup-node@v3.8.1
