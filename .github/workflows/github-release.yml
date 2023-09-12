@@ -5,9 +5,9 @@ name: Release on Github
 on:
   workflow_dispatch:
 
-  push:
-    tags:
-      - '**'
+  # push:
+  #   tags:
+  #     - '**'
 
 jobs:
   release:
