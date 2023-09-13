@@ -32,11 +32,11 @@
     "url": "https://github.com/njfamirm/alwatr-community/issues"
   },
   "dependencies": {
-    "@alwatr/fetch": "^1.0.0",
-    "@alwatr/logger": "^1.1.0",
-    "@alwatr/nano-server": "^1.0.0",
-    "@alwatr/storage-client": "^1.0.1",
-    "@alwatr/storage-engine": "^1.0.1",
+    "@alwatr/fetch": "^1.1.2",
+    "@alwatr/logger": "^1.1.2",
+    "@alwatr/nano-server": "^1.1.2",
+    "@alwatr/storage-client": "^1.1.2",
+    "@alwatr/storage-engine": "^1.1.2",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
