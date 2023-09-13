@@ -35,8 +35,8 @@
     "watch:es": "yarn build:es --watch"
   },
   "devDependencies": {
-    "@alwatr/fetch": "^1.0.0",
-    "@alwatr/logger": "^1.1.0",
+    "@alwatr/fetch": "^1.1.2",
+    "@alwatr/logger": "^1.1.2",
     "@alwatr/type": "^1.1.1",
     "@types/node": "^20.6.0",
     "esbuild": "^0.19.2",

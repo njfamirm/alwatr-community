@@ -33,8 +33,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@alwatr-community/apod-crawler@workspace:service/apod-crawler"
   dependencies:
-    "@alwatr/fetch": ^1.0.0
-    "@alwatr/logger": ^1.1.0
+    "@alwatr/fetch": ^1.1.2
+    "@alwatr/logger": ^1.1.2
     "@alwatr/type": ^1.1.1
     "@types/node": ^20.6.0
     esbuild: ^0.19.2
@@ -49,12 +49,12 @@ __metadata:
   resolution: "@alwatr-community/day-countdown-bot@workspace:uniquely/day-countdown-bot"
   dependencies:
     "@alwatr-community/telegram": ^0.1.0
-    "@alwatr/fetch": ^1.0.0
+    "@alwatr/fetch": ^1.1.2
     "@alwatr/i18n": ^1.1.2
-    "@alwatr/logger": ^1.1.0
+    "@alwatr/logger": ^1.1.2
     "@alwatr/math": ^1.1.2
-    "@alwatr/nano-server": ^1.0.0
-    "@alwatr/storage-engine": ^1.0.1
+    "@alwatr/nano-server": ^1.1.2
+    "@alwatr/storage-engine": ^1.1.2
     "@alwatr/type": ^1.1.1
     "@grammyjs/types": ^3.2.1
     "@types/moment-jalaali": ^0.7.5
@@ -106,26 +106,26 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@alwatr-community/telegram@workspace:core/telegram"
   dependencies:
-    "@alwatr/fetch": ^1.0.0
-    "@alwatr/logger": ^1.1.0
-    "@alwatr/nano-server": ^1.0.0
-    "@alwatr/storage-client": ^1.0.1
-    "@alwatr/storage-engine": ^1.0.1
+    "@alwatr/fetch": ^1.1.2
+    "@alwatr/logger": ^1.1.2
+    "@alwatr/nano-server": ^1.1.2
+    "@alwatr/storage-client": ^1.1.2
+    "@alwatr/storage-engine": ^1.1.2
     "@alwatr/type": ^1.1.1
     "@grammyjs/types": ^3.2.1
     tslib: ^2.6.2
   languageName: unknown
   linkType: soft
 
-"@alwatr/fetch@npm:^1.0.0, @alwatr/fetch@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@alwatr/fetch@npm:1.0.1"
+"@alwatr/fetch@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@alwatr/fetch@npm:1.1.2"
   dependencies:
-    "@alwatr/logger": ^1.0.1
-    "@alwatr/signal": ^1.0.1
-    "@alwatr/util": ^1.0.1
-    tslib: ^2.5.3
-  checksum: cc620a63d87a035be72d0711f02747afc12cd9b25ea10d2b88639e9542d9f24fe0c9db393ac584dfb95fd5cce0783f33c57b06c69d46395b595feea12dfcc257
+    "@alwatr/logger": ^1.1.2
+    "@alwatr/signal": ^1.1.2
+    "@alwatr/util": ^1.2.0
+    tslib: ^2.6.2
+  checksum: acd6eb4c8bd9eaeba39a03ccc8543ce53363a4e7e3429eda66231a7b3fbbae47f2e83a602ebf88ab8b81fe624d80e5fb55a4be348504cb52587b9a8ed6c094d7
   languageName: node
   linkType: hard
 
@@ -141,26 +141,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alwatr/logger@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@alwatr/logger@npm:1.0.1"
-  dependencies:
-    "@alwatr/type": ^1.0.1
-    tslib: ^2.5.3
-  checksum: f438d2eb23f7d6d645288c25417dee395f83af34f2839bcdbca542ec4008028f5b01093ac41aa49b9aad9c60d63db8c9514e1a43faf7afb1340d2532f5af2ca4
-  languageName: node
-  linkType: hard
-
-"@alwatr/logger@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@alwatr/logger@npm:1.1.0"
-  dependencies:
-    "@alwatr/type": ^1.1.0
-    tslib: ^2.6.2
-  checksum: 18a07b2690b8ce4ff3a43032e3796411bbc47d732e33141d7b36386060133a1ab60a5787308c374982b337d810761798b55ff5a5780770bec3176d5e20c782b4
-  languageName: node
-  linkType: hard
-
 "@alwatr/logger@npm:^1.1.2":
   version: 1.1.2
   resolution: "@alwatr/logger@npm:1.1.2"
@@ -168,16 +148,6 @@ __metadata:
     "@alwatr/type": ^1.1.1
     tslib: ^2.6.2
   checksum: 75b3ad9f96a2849aa5dc7ca62769477176401ce654e895e1c18d2db42d5e6c46b10d9b277c1c8e7e3aac5c8ddbfeaa160f783ab6ac545e6e0d966a9268c7cd76
-  languageName: node
-  linkType: hard
-
-"@alwatr/math@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@alwatr/math@npm:1.0.1"
-  dependencies:
-    "@alwatr/logger": ^1.0.1
-    tslib: ^2.5.3
-  checksum: e0a1c8c157526779f85afac51340c447cb48807f48be766839fc9ce6f791610d70eaf7aa6cc7e2c8faaa5afcc838405cee44ed4892436e774f65e3700a78aede
   languageName: node
   linkType: hard
 
@@ -191,26 +161,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alwatr/nano-server@npm:^1.0.0":
-  version: 1.0.1
-  resolution: "@alwatr/nano-server@npm:1.0.1"
+"@alwatr/nano-server@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@alwatr/nano-server@npm:1.1.2"
   dependencies:
-    "@alwatr/logger": ^1.0.1
-    "@alwatr/math": ^1.0.1
-    tslib: ^2.5.3
-  checksum: c7f91d08a232214d97a497972f9036377bc1939d291584e05bcac06347a1ea7937710a3d0c0a1747e168fd9add85bcb42843ba2d96ecc735bd2badfaaf9225e4
-  languageName: node
-  linkType: hard
-
-"@alwatr/signal@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@alwatr/signal@npm:1.0.1"
-  dependencies:
-    "@alwatr/logger": ^1.0.1
-    "@alwatr/type": ^1.0.1
-    "@alwatr/util": ^1.0.1
-    tslib: ^2.5.3
-  checksum: 8b5f0fdbc9d67460420f863065188f5be957a31702eb13b99c233deb42d32f59ef0adcfe273b5045acee0ec36a8aee85f8663bdb513fb400a4109496ca132a5d
+    "@alwatr/logger": ^1.1.2
+    "@alwatr/math": ^1.1.2
+    tslib: ^2.6.2
+  checksum: 4bf6b176062dbb2249f42bdfdb5c0bfc5fc9b03a6a01bf619a73d467080c8700d4a12bafdd09fb61e967f4e1e53141df50c383ca6a1fda41c72926d2ef294583
   languageName: node
   linkType: hard
 
@@ -226,40 +184,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@alwatr/storage-client@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@alwatr/storage-client@npm:1.0.1"
+"@alwatr/storage-client@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@alwatr/storage-client@npm:1.1.2"
   dependencies:
-    "@alwatr/fetch": ^1.0.1
-    "@alwatr/logger": ^1.0.1
-    tslib: ^2.5.3
-  checksum: 8baee948b62a72b51b4a413f964441c13c56d757689c26f161dd9ce25bc587e7f3749a9524cf6a6452bc62076303c731ac37153b15c6b4e82048eefd26aedab4
+    "@alwatr/fetch": ^1.1.2
+    "@alwatr/logger": ^1.1.2
+    tslib: ^2.6.2
+  checksum: 38c169455ad16b402e060ac9a7d0fa879a09326162181002dc8f679d78a4648395d04872e11ba0c463e4f7902eef89364906c0d96724ec2638a97eaa46fb655e
   languageName: node
   linkType: hard
 
-"@alwatr/storage-engine@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@alwatr/storage-engine@npm:1.0.1"
+"@alwatr/storage-engine@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@alwatr/storage-engine@npm:1.1.2"
   dependencies:
-    "@alwatr/logger": ^1.0.1
-    "@alwatr/util": ^1.0.1
-    exit-hook: ^3.2.0
-    tslib: ^2.5.3
-  checksum: 53c530ebd7b89caf5f1cc698f92b6554f7a83d6b8d890d20ed75e7663f8e792a057eef8fe40c1d7c82b78302e94ae9bc5032bedadf6966f69abe626c413ed27d
-  languageName: node
-  linkType: hard
-
-"@alwatr/type@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@alwatr/type@npm:1.0.1"
-  checksum: e3bca3d8087654702aa2f8aae7f6aad99d968f472be84e161195a892fb8068aa775e8a2ee812579c4d545e46599914a485bd5ab93a0200ca71710ecaa9f38148
-  languageName: node
-  linkType: hard
-
-"@alwatr/type@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@alwatr/type@npm:1.1.0"
-  checksum: a78185d6a53fbda213df20b4ae5cd9b48dcbf13f16fe7b6141c5f42d342a27ce839c37bbfd2a8727db3d8f081a93282332e4615fcbfedaf1944ac793f9cd33ff
+    "@alwatr/logger": ^1.1.2
+    "@alwatr/util": ^1.2.0
+    exit-hook: ^4.0.0
+    tslib: ^2.6.2
+  checksum: 32c75aa839876c493c157dbd7f6132b365ca099aa0e2dc51978629def04f2ea0dfe337c439612bb2b1f499991b7e531a50b36d97457a19875397827760fc8859
   languageName: node
   linkType: hard
 
@@ -267,17 +211,6 @@ __metadata:
   version: 1.1.1
   resolution: "@alwatr/type@npm:1.1.1"
   checksum: 2c053b077448fe72f64a4d63ab75d1ae232abca2705431168f7a4a3ce5dff358ffa167cc4e806286dbc99d210759aa94c1d9fd87755127058100c2c88b8d8408
-  languageName: node
-  linkType: hard
-
-"@alwatr/util@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "@alwatr/util@npm:1.0.1"
-  dependencies:
-    "@alwatr/math": ^1.0.1
-    "@alwatr/type": ^1.0.1
-    tslib: ^2.5.3
-  checksum: 97cc69618ee6316a77f0e3e6af23e1ab39f482f11409ff0b8dbf542264c1b3211b703a7179e725ce81ac938dbf9fc53c91a7f41a14b1f3a597add91c2767e283
   languageName: node
   linkType: hard
 
@@ -5900,10 +5833,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"exit-hook@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "exit-hook@npm:3.2.0"
-  checksum: 48b7ab6538043eb5b91379852fa01cb301810806f181f2f784fc596a6ce08016bb8b636881b873a3cf0a604f3ec746a6da52081a9c2e02b1858c59481cf00442
+"exit-hook@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "exit-hook@npm:4.0.0"
+  checksum: 5aa8b4e45fa943e7e174c25329750a0ffefb593ccc2eafd5d67e1d734b114c93cb36b5714548fb1c2a1dd90f3e9cdc606b5e788f428f780708774da444021fdc
   languageName: node
   linkType: hard
 
@@ -12108,7 +12041,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0, tslib@npm:^2.5.3":
+"tslib@npm:^2.1.0, tslib@npm:^2.3.0, tslib@npm:^2.4.0":
   version: 2.6.0
   resolution: "tslib@npm:2.6.0"
   checksum: c01066038f950016a18106ddeca4649b4d76caa76ec5a31e2a26e10586a59fceb4ee45e96719bf6c715648e7c14085a81fee5c62f7e9ebee68e77a5396e5538f
