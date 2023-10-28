@@ -5,14 +5,14 @@ import {message} from './director/l18e-loader.js';
 import {bot} from './lib/bot.js';
 import {contentStorageClient} from './lib/storage.js';
 import {adminInfoList} from './util/admin.js';
-import {dateDistance, mobaheleh} from './util/calender.js';
+import {dateDistance, fatemieh} from './util/calender.js';
 import {actionAllChat, checkDayCountdownSent, deleteChat, setDayCountdownSent} from './util/chat.js';
 
 import type {MaybePromise} from '@alwatr/type';
 
 export async function sendDayCountdownContent(day: number): Promise<void> {
   logger.logMethodArgs?.('sendDayCountdownContent', {day});
-  const content = await contentStorageClient.get(day + '', 'mobaheleh');
+  const content = await contentStorageClient.get(day + '', 'fatemieh');
   if (content == null) {
     logger.accident('dayCountdown', 'content_is_null', {day});
     for (let i = adminInfoList.length - 1; 0 <= i; i--) {
@@ -80,7 +80,7 @@ export async function dayCountdown(): Promise<void> {
   const targetTime = new Date();
   targetTime.setHours(config.bot.notifyTimestamp, 0, 0, 0);
   scheduleDailyTask(targetTime, async () => {
-    let day = dateDistance(mobaheleh.valueOf());
+    let day = dateDistance(fatemieh.valueOf());
     if (day < 0) return; // TODO: notify to admin for remove it.
 
     await sendDayCountdownContent(day);

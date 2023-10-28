@@ -2,14 +2,14 @@ import {createLogger} from '@alwatr/logger';
 
 export const logger = createLogger('telegram-day-countdown');
 
-const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
-const telegramBotWebhookDomain = process.env.TELEGRAM_BOT_WEBHOOK_DOMAIN;
+const telegramBotToken = process.env.telegramBotToken;
+const telegramBotWebhookDomain = process.env.telegramBotWebhookDomain;
 
 if (telegramBotToken == null) {
-  throw new Error('telegram bot token required, TELEGRAM_BOT_TOKEN="YOUR_SECRET_TOKEN" yarn start');
+  throw new Error('telegram bot token required, telegramBotToken="YOUR_SECRET_TOKEN" yarn start');
 }
 if (telegramBotWebhookDomain == null) {
-  throw new Error('telegram bot webhook url required, TELEGRAM_BOT_WEBHOOK_DOMAIN="YOUR_WEBHOOK_DOMAIN" yarn start');
+  throw new Error('telegram bot webhook url required, telegramBotWebhookDomain="YOUR_WEBHOOK_DOMAIN" yarn start');
 }
 
 process.env.TZ = 'Asia/Tehran';
@@ -17,7 +17,7 @@ process.env.TZ = 'Asia/Tehran';
 export const config = {
   telegram: {
     token: telegramBotToken,
-    username: process.env.TELEGRAM_BOT_USERNAME,
+    username: process.env.telegramBotUsername,
     webhookDomain: telegramBotWebhookDomain,
     host: process.env.HOST ?? '0.0.0.0',
     port: process.env.PORT ? +process.env.PORT : 8080,
