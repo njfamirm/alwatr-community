@@ -13,7 +13,7 @@ import './director/index.js';
 import {launchBot} from './lib/launch.js';
 import './util/admin.js';
 
-logger.logOther?.('..:: Day Countdown Telegram Bot ::..');
+logger.banner?.('Day Countdown Telegram Bot');
 
 await launchBot();
 await dayCountdown();
