@@ -14,7 +14,7 @@ export async function sendDayCountdownContent(day: number): Promise<void> {
   logger.logMethodArgs?.('sendDayCountdownContent', {day});
   const content = await contentStorageClient.get(day + '', 'mobaheleh');
   if (content == null) {
-    logger.accident('dayCountdown', 'content_is_null', 'Content is Null', day);
+    logger.accident('dayCountdown', 'content_is_null', {day});
     for (let i = adminInfoList.length - 1; 0 <= i; i--) {
       await bot.api.sendMessage(adminInfoList[i].chatId,
           message('send_get_content_null_message').replace('${day}', day + '',
@@ -46,7 +46,7 @@ export async function sendDayCountdownContent(day: number): Promise<void> {
       }
     }
     catch {
-      logger.accident('dayCountdown', 'copy_message_error', 'Copy Message Error', day, chat.id);
+      logger.accident('dayCountdown', 'copy_message_error', {day, chatId: chat.id});
     }
   });
 
