@@ -70,7 +70,7 @@
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6",
     "tailwindcss": "^3.3.5",
-    "ts-lit-plugin": "^2.0.0",
+    "ts-lit-plugin": "^2.0.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
     "workbox-build": "^7.0.0"
