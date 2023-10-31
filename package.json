@@ -48,8 +48,8 @@
   "devDependencies": {
     "@deanc/esbuild-plugin-postcss": "^1.0.2",
     "@types/node": "^20.8.9",
-    "@typescript-eslint/eslint-plugin": "^6.9.0",
-    "@typescript-eslint/parser": "^6.9.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
     "@web/dev-server": "^0.3.6",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "autoprefixer": "^10.4.16",
