@@ -75,7 +75,7 @@ __metadata:
     "@types/node": ^20.8.9
     "@typescript-eslint/eslint-plugin": ^6.9.0
     "@typescript-eslint/parser": ^6.9.0
-    "@web/dev-server": ^0.3.6
+    "@web/dev-server": ^0.3.7
     "@webcomponents/webcomponentsjs": ^2.8.0
     autoprefixer: ^10.4.16
     esbuild: ^0.19.5
@@ -3512,9 +3512,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@web/dev-server@npm:^0.3.6":
-  version: 0.3.6
-  resolution: "@web/dev-server@npm:0.3.6"
+"@web/dev-server@npm:^0.3.7":
+  version: 0.3.7
+  resolution: "@web/dev-server@npm:0.3.7"
   dependencies:
     "@babel/code-frame": ^7.12.11
     "@types/command-line-args": ^5.0.0
@@ -3533,7 +3533,7 @@ __metadata:
   bin:
     wds: dist/bin.js
     web-dev-server: dist/bin.js
-  checksum: f3210093ddef99fe9acaa9afc7988fc627dc7f303011fb28c52bd64fabe21846efbbe79161a069c3612cbdd01f0061b4a3055de0003c199f948f0edd8d815725
+  checksum: 01cb9d24b4806d2b45c7a263e1c603e167042b57031c97a8690aa7e1680a12c54c2c59ebf3f86fd293e6088379c3db21ac9cbe3fe983d49cf9e9573065d14683
   languageName: node
   linkType: hard
 
