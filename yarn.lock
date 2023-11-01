@@ -36,7 +36,7 @@ __metadata:
     "@alwatr/fetch": ^2.0.6
     "@alwatr/logger": ^2.1.1
     "@alwatr/type": ^1.1.4
-    "@types/node": ^20.8.9
+    "@types/node": ^20.8.10
     esbuild: ^0.19.5
     nodemon: ^3.0.1
     npm-run-all: ^4.1.5
@@ -58,7 +58,7 @@ __metadata:
     "@alwatr/type": ^1.1.4
     "@grammyjs/types": ^3.3.0
     "@types/moment-jalaali": ^0.7.8
-    "@types/node": ^20.8.9
+    "@types/node": ^20.8.10
     esbuild: ^0.19.5
     moment-jalaali: ^0.10.0
     nodemon: ^3.0.1
@@ -72,7 +72,7 @@ __metadata:
   resolution: "@alwatr-community/monorepo@workspace:."
   dependencies:
     "@deanc/esbuild-plugin-postcss": ^1.0.2
-    "@types/node": ^20.8.9
+    "@types/node": ^20.8.10
     "@typescript-eslint/eslint-plugin": ^6.9.0
     "@typescript-eslint/parser": ^6.9.0
     "@web/dev-server": ^0.3.6
@@ -3230,12 +3230,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.8.9":
-  version: 20.8.9
-  resolution: "@types/node@npm:20.8.9"
+"@types/node@npm:^20.8.10":
+  version: 20.8.10
+  resolution: "@types/node@npm:20.8.10"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 0c05f3502a9507ff27e91dd6fd574fa6f391b3fafedcfe8e0c8d33351fb22d02c0121f854e5b6b3ecb9a8a468407ddf6e7ac0029fb236d4c7e1361ffc758a01f
+  checksum: 7c61190e43e8074a1b571e52ff14c880bc67a0447f2fe5ed0e1a023eb8a23d5f815658edb98890f7578afe0f090433c4a635c7c87311762544e20dd78723e515
   languageName: node
   linkType: hard
 
