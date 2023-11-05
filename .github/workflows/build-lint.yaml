@@ -44,4 +44,4 @@ jobs:
       - name: 🚀 Run ESLint
         run: yarn lint:ts
         env:
-          NODE_OPTIONS: "--max-old-space-size=4096 --max-semi-space-size=64"
+          NODE_OPTIONS: '--max-old-space-size=4096 --max-semi-space-size=64'
