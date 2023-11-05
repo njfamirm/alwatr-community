@@ -7,7 +7,7 @@
     "version": {
       "conventionalCommits": true,
       "changelogPreset": "angular",
-      "message": "release",
+      "message": "release: new one",
       "forcePublish": true,
       "createRelease": "github",
       "signGitTag": true,
