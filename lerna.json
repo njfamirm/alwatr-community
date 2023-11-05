@@ -1,23 +1,23 @@
 {
-  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "$schema": "node_modules/@lerna-lite/cli/schemas/lerna-schema.json",
   "version": "independent",
   "npmClient": "yarn",
   "packages": ["core/*", "service/*", "uniquely/*"],
+  "loglevel": "verbose",
   "command": {
     "version": {
       "conventionalCommits": true,
-      "changelogPreset": "angular",
-      "private": true,
+      "changelog": true,
+      "changelogPreset": "conventional-changelog-angular",
+      "changelogIncludeCommitsClientLogin": " by @%l",
+      "ignoreChanges": ["*.md"],
       "message": "release: new one",
-      "forcePublish": true,
-      "createRelease": "github",
+      "private": true,
+      "forceGitTag": true,
       "signGitTag": true,
-      "progress": true,
-      "push": true
-    },
-    "publish": {
-      "conventionalCommits": true,
-      "ignoreChanges": ["*.md"]
+      "signGitCommit": true,
+      "push": true,
+      "createRelease": "github"
     },
     "run": {
       "stream": true
