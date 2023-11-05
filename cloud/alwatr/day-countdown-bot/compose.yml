@@ -19,7 +19,7 @@ services:
     networks:
       internal:
         aliases:
-          - '${APP_ID}-storage-server'
+          - '${appId}-storage-server'
 
     environment:
       - STORAGE_PATH=/storage
@@ -52,7 +52,7 @@ services:
       alwatr-public-network:
 
     environment:
-      - STORAGE_HOST=${APP_ID}-storage-server
+      - STORAGE_HOST=${appId}-storage-server
       - STORAGE_PORT=80
       - STORAGE_TOKEN=${STORAGE_ACCESS_TOKEN}
       - telegramBotToken=${telegramBotToken}
