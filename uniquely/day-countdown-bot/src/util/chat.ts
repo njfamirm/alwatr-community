@@ -17,12 +17,21 @@ export async function isSubscribed(chatId: string | number): Promise<boolean> {
 export async function toggleSubscribe(chatId: number): Promise<boolean | null> {
   logger.logMethodArgs?.('toggleSubscribe', {chatId});
   const chat = await chatStorageClient.get<DayCountdownChat>(chatId + '');
-  logger.logMethodArgs?.('toggleSubscribe', {chat});
   if (chat == null || chat.chatDetail == null) return null;
 
   chat.isSubscribed = !chat.isSubscribed;
   chatStorageClient.set<DayCountdownChat>(chat);
   return chat.isSubscribed;
+}
+
+export async function subscribe(chatId: number | string): Promise<boolean | null> {
+  logger.logMethodArgs?.('subscribe', {chatId});
+  const chat = await chatStorageClient.get<DayCountdownChat>(chatId + '');
+  logger.logProperty?.('chat', chat);
+  if (chat == null || chat.chatDetail == null) return null;
+  chat.isSubscribed = true;
+  chatStorageClient.set<DayCountdownChat>(chat);
+  return true;
 }
 
 export async function addChat(chat: Chat, messageThreadId?: number): Promise<ChatDetail | null> {
