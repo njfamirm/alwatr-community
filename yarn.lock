@@ -36,7 +36,7 @@ __metadata:
     "@alwatr/fetch": ^2.0.7
     "@alwatr/logger": ^2.1.2
     "@alwatr/type": ^1.1.4
-    "@types/node": ^20.8.10
+    "@types/node": ^20.9.0
     esbuild: ^0.19.5
     nodemon: ^3.0.1
     npm-run-all: ^4.1.5
@@ -57,8 +57,8 @@ __metadata:
     "@alwatr/storage-engine": ^1.1.2
     "@alwatr/type": ^1.1.4
     "@grammyjs/types": ^3.3.0
-    "@types/moment-jalaali": ^0.7.8
-    "@types/node": ^20.8.10
+    "@types/moment-jalaali": ^0.7.9
+    "@types/node": ^20.9.0
     esbuild: ^0.19.5
     moment-jalaali: ^0.10.0
     nodemon: ^3.0.1
@@ -79,7 +79,7 @@ __metadata:
     "@lerna-lite/publish": ^2.6.0
     "@lerna-lite/run": ^2.6.0
     "@lerna-lite/version": ^2.5.1
-    "@types/node": ^20.8.10
+    "@types/node": ^20.9.0
     "@typescript-eslint/eslint-plugin": ^6.9.1
     "@typescript-eslint/parser": ^6.9.1
     "@web/dev-server": ^0.4.0
@@ -3419,12 +3419,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/moment-jalaali@npm:^0.7.8":
-  version: 0.7.8
-  resolution: "@types/moment-jalaali@npm:0.7.8"
+"@types/moment-jalaali@npm:^0.7.9":
+  version: 0.7.9
+  resolution: "@types/moment-jalaali@npm:0.7.9"
   dependencies:
     moment: ">=2.14.0"
-  checksum: 06f6490c84c1efbbb47dece0324548227aa776850096160fc872bcbb312f9863aa0aa5b1cc70cc410dfa25e36763ef7e702a7a8b1ca63a3fd60c13993d945a91
+  checksum: a14b2bf07671227cdceca6982d3262433f87eb2deab175c8dc017353f9d61970dadffcd1fd0095f4de4260e494c765e7505a3af3f377038fc1d95042591dc34c
   languageName: node
   linkType: hard
 
@@ -3435,12 +3435,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.8.10":
-  version: 20.8.10
-  resolution: "@types/node@npm:20.8.10"
+"@types/node@npm:^20.9.0":
+  version: 20.9.0
+  resolution: "@types/node@npm:20.9.0"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 7c61190e43e8074a1b571e52ff14c880bc67a0447f2fe5ed0e1a023eb8a23d5f815658edb98890f7578afe0f090433c4a635c7c87311762544e20dd78723e515
+  checksum: bfd927da6bff8a32051fa44bb47ca32a56d2c8bc8ba0170770f181cc1fa3c0b05863c9b930f0ba8604a48d5eb0d319166601709ca53bf2deae0025d8b6c6b8a3
   languageName: node
   linkType: hard
 
