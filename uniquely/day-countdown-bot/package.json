@@ -39,7 +39,7 @@
     "@alwatr/fetch": "^2.0.7",
     "@alwatr/i18n": "^1.1.2",
     "@alwatr/logger": "^2.1.2",
-    "@alwatr/math": "^1.1.11",
+    "@alwatr/math": "^1.1.12",
     "@alwatr/nano-server": "^1.1.11",
     "@alwatr/storage-engine": "^1.1.2",
     "@alwatr/type": "^1.1.4",
