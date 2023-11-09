@@ -35,7 +35,7 @@ __metadata:
   dependencies:
     "@alwatr/fetch": ^2.0.7
     "@alwatr/logger": ^2.1.2
-    "@alwatr/type": ^1.1.4
+    "@alwatr/type": ^1.1.5
     "@types/node": ^20.8.10
     esbuild: ^0.19.5
     nodemon: ^3.0.1
@@ -55,7 +55,7 @@ __metadata:
     "@alwatr/math": ^1.1.11
     "@alwatr/nano-server": ^1.1.11
     "@alwatr/storage-engine": ^1.1.2
-    "@alwatr/type": ^1.1.4
+    "@alwatr/type": ^1.1.5
     "@grammyjs/types": ^3.3.0
     "@types/moment-jalaali": ^0.7.8
     "@types/node": ^20.8.10
@@ -117,7 +117,7 @@ __metadata:
     "@alwatr/nano-server": ^1.1.11
     "@alwatr/storage-client": ^1.1.2
     "@alwatr/storage-engine": ^1.1.2
-    "@alwatr/type": ^1.1.4
+    "@alwatr/type": ^1.1.5
     "@grammyjs/types": ^3.3.0
     tslib: ^2.6.2
   languageName: unknown
@@ -254,6 +254,13 @@ __metadata:
   version: 1.1.4
   resolution: "@alwatr/type@npm:1.1.4"
   checksum: 28b418e3d509d581d4e850e65c256f8818e9b38335e2a1e3da11f7d04776465884e84bd7d2dd943f58694d2d188550012387bef748d13c04a14cb52a023a8dad
+  languageName: node
+  linkType: hard
+
+"@alwatr/type@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "@alwatr/type@npm:1.1.5"
+  checksum: e8c7f6e377821afaaa4164d2a65010f25807c2a250ca95636d9be34d8a7f6d31e483c2e7b69ea968bd442d916389bdeb9fe7856130c118362f351367fb5efb10
   languageName: node
   linkType: hard
 
