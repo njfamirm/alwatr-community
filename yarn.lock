@@ -35,8 +35,8 @@ __metadata:
   dependencies:
     "@alwatr/fetch": ^2.0.7
     "@alwatr/logger": ^2.1.2
-    "@alwatr/type": ^1.1.4
-    "@types/node": ^20.8.10
+    "@alwatr/type": ^1.1.5
+    "@types/node": ^20.9.0
     esbuild: ^0.19.5
     nodemon: ^3.0.1
     npm-run-all: ^4.1.5
@@ -55,10 +55,10 @@ __metadata:
     "@alwatr/math": ^1.1.12
     "@alwatr/nano-server": ^1.1.11
     "@alwatr/storage-engine": ^1.1.2
-    "@alwatr/type": ^1.1.4
+    "@alwatr/type": ^1.1.5
     "@grammyjs/types": ^3.3.0
-    "@types/moment-jalaali": ^0.7.8
-    "@types/node": ^20.8.10
+    "@types/moment-jalaali": ^0.7.9
+    "@types/node": ^20.9.0
     esbuild: ^0.19.5
     moment-jalaali: ^0.10.0
     nodemon: ^3.0.1
@@ -79,7 +79,7 @@ __metadata:
     "@lerna-lite/publish": ^2.6.0
     "@lerna-lite/run": ^2.6.0
     "@lerna-lite/version": ^2.5.1
-    "@types/node": ^20.8.10
+    "@types/node": ^20.9.0
     "@typescript-eslint/eslint-plugin": ^6.9.1
     "@typescript-eslint/parser": ^6.9.1
     "@web/dev-server": ^0.4.0
@@ -99,7 +99,7 @@ __metadata:
     postcss-import: ^15.1.0
     postcss-preset-env: ^9.3.0
     prettier: ^3.0.3
-    prettier-plugin-tailwindcss: ^0.5.6
+    prettier-plugin-tailwindcss: ^0.5.7
     tailwindcss: ^3.3.5
     ts-lit-plugin: ^2.0.1
     tslib: ^2.6.2
@@ -117,7 +117,7 @@ __metadata:
     "@alwatr/nano-server": ^1.1.11
     "@alwatr/storage-client": ^1.1.2
     "@alwatr/storage-engine": ^1.1.2
-    "@alwatr/type": ^1.1.4
+    "@alwatr/type": ^1.1.5
     "@grammyjs/types": ^3.3.0
     tslib: ^2.6.2
   languageName: unknown
@@ -273,6 +273,13 @@ __metadata:
   version: 1.1.4
   resolution: "@alwatr/type@npm:1.1.4"
   checksum: 28b418e3d509d581d4e850e65c256f8818e9b38335e2a1e3da11f7d04776465884e84bd7d2dd943f58694d2d188550012387bef748d13c04a14cb52a023a8dad
+  languageName: node
+  linkType: hard
+
+"@alwatr/type@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "@alwatr/type@npm:1.1.5"
+  checksum: e8c7f6e377821afaaa4164d2a65010f25807c2a250ca95636d9be34d8a7f6d31e483c2e7b69ea968bd442d916389bdeb9fe7856130c118362f351367fb5efb10
   languageName: node
   linkType: hard
 
@@ -3438,12 +3445,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/moment-jalaali@npm:^0.7.8":
-  version: 0.7.8
-  resolution: "@types/moment-jalaali@npm:0.7.8"
+"@types/moment-jalaali@npm:^0.7.9":
+  version: 0.7.9
+  resolution: "@types/moment-jalaali@npm:0.7.9"
   dependencies:
     moment: ">=2.14.0"
-  checksum: 06f6490c84c1efbbb47dece0324548227aa776850096160fc872bcbb312f9863aa0aa5b1cc70cc410dfa25e36763ef7e702a7a8b1ca63a3fd60c13993d945a91
+  checksum: a14b2bf07671227cdceca6982d3262433f87eb2deab175c8dc017353f9d61970dadffcd1fd0095f4de4260e494c765e7505a3af3f377038fc1d95042591dc34c
   languageName: node
   linkType: hard
 
@@ -3454,12 +3461,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.8.10":
-  version: 20.8.10
-  resolution: "@types/node@npm:20.8.10"
+"@types/node@npm:^20.9.0":
+  version: 20.9.0
+  resolution: "@types/node@npm:20.9.0"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 7c61190e43e8074a1b571e52ff14c880bc67a0447f2fe5ed0e1a023eb8a23d5f815658edb98890f7578afe0f090433c4a635c7c87311762544e20dd78723e515
+  checksum: bfd927da6bff8a32051fa44bb47ca32a56d2c8bc8ba0170770f181cc1fa3c0b05863c9b930f0ba8604a48d5eb0d319166601709ca53bf2deae0025d8b6c6b8a3
   languageName: node
   linkType: hard
 
@@ -9989,9 +9996,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-tailwindcss@npm:^0.5.6":
-  version: 0.5.6
-  resolution: "prettier-plugin-tailwindcss@npm:0.5.6"
+"prettier-plugin-tailwindcss@npm:^0.5.7":
+  version: 0.5.7
+  resolution: "prettier-plugin-tailwindcss@npm:0.5.7"
   peerDependencies:
     "@ianvs/prettier-plugin-sort-imports": "*"
     "@prettier/plugin-pug": "*"
@@ -10038,7 +10045,7 @@ __metadata:
       optional: true
     prettier-plugin-twig-melody:
       optional: true
-  checksum: ea5b18daf8727ee77eb6f10e5ceb43416aedee48350b838faae5764083dadb93edba33b84ed5c6ce606de33c875fc444ca979e669f340373fa0f0b76a5cafeac
+  checksum: 616c6eabd319453294fb1d2b241d6ff68b876092a902da67c90c39d4a2120ad605749ead09e08f3be11b4abdb60e63ce5dad1088f277b431b1131ffb365ce679
   languageName: node
   linkType: hard
 
