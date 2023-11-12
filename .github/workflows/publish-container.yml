@@ -15,7 +15,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  USER: alwatr
+  USER: njfamirm
 
 jobs:
   build:
@@ -95,12 +95,17 @@ jobs:
             type=semver,enable=true,pattern={{version}}
             type=ref,enable=true,event=branch
 
+          labels: |
+            org.opencontainers.image.authors=njfamirm@gmail.com
+            org.opencontainers.image.title=@alwatr-community/${{ matrix.name }}
+            org.opencontainers.image.description=${{ matrix.description }}
+
       - name: 🚀 Build and push container image
         if: ${{ steps.file_change.outputs.container_folder != 'false' }}
         id: build_and_push
         uses: docker/build-push-action@v5.0.0
         with:
-          context: ./${{matrix.path}}
+          context: .
           file: ${{matrix.dockerfile}}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{steps.meta.outputs.tags}}
@@ -109,6 +114,7 @@ jobs:
           build-args: |
             BUILD_DATE=${{github.event.repository.updated_at}}
             BUILD_REV=${{github.sha}}
+            PACKAGE_SOURCE=${{ matrix.path }}
 
       - name: 🏗 Sign the image with GitHub OIDC Token
         if: ${{ github.event_name != 'pull_request' && steps.file_change.outputs.container_folder != 'false' }}
