@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Build & Publish Containers
+
+on:
+  workflow_dispatch:
+
+  push:
+    tags:
+      - '*@*'
+    branches:
+      - main
+
+  pull_request:
+
+env:
+  REGISTRY: ghcr.io
+  USER: alwatr
+
+jobs:
+  build:
+    if: github.repository_owner == 'njfamirm'
+
+    name: Build & Publish Containers
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        include:
+          # services
+          - name: apod-crawler
+            path: service/apod-crawler
+            dockerfile: cloud/container/alwatr-services.dockerfile
+            description: Alwatr Nasa APOD crawler.
+
+          # uniquely
+          - name: day-countdown-bot
+            path: uniquely/day-countdown-bot
+            dockerfile: cloud/container/alwatr-services.dockerfile
+            description: Day countdown Telegram bot.
+
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - name: ⤵️ Checkout repository
+        uses: actions/checkout@v4.1.1
+
+      - name: ❔ Check Container files changed
+        id: file_change
+        if: ${{ github.event_name != 'release' }}
+        uses: dorny/paths-filter@v2.11.1
+        with:
+          filters: |
+            container_folder:
+              ./${{ matrix.path }}/*
+
+      - name: 🏗 Install cosign
+        if: ${{ github.event_name != 'pull_request' && steps.file_change.outputs.container_folder != 'false' }}
+        uses: sigstore/cosign-installer@v3.2.0
+
+      - name: 🏗 Setup Docker Buildx
+        if: ${{ steps.file_change.outputs.container_folder != 'false' }}
+        uses: docker/setup-buildx-action@v3.0.0
+
+      - name: 🏗 Cache Docker Layers
+        if: ${{ steps.file_change.outputs.container_folder != 'false' }}
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: alwatr-${{ matrix.path }}
+
+      - name: 🏗 Log into registry ${{env.REGISTRY}}
+        if: ${{ github.event_name != 'pull_request' && steps.file_change.outputs.container_folder != 'false' }}
+        uses: docker/login-action@v3.0.0
+        with:
+          registry: ${{env.REGISTRY}}
+          username: ${{github.repository_owner}}
+          password: ${{secrets.GITHUB_TOKEN}}
+
+      - name: 🏗 Extract metadata
+        if: ${{ steps.file_change.outputs.container_folder != 'false' }}
+        id: meta
+        uses: docker/metadata-action@v5.0.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          images: name=${{env.REGISTRY}}/${{env.USER}}/${{matrix.path}},enable=true
+          tags: |
+            type=semver,enable=true,pattern={{major}}
+            type=semver,enable=true,pattern={{major}}.{{minor}}
+            type=semver,enable=true,pattern={{version}}
+            type=ref,enable=true,event=branch
+
+      - name: 🚀 Build and push container image
+        if: ${{ steps.file_change.outputs.container_folder != 'false' }}
+        id: build_and_push
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: ./${{matrix.path}}
+          file: ${{matrix.dockerfile}}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{steps.meta.outputs.tags}}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+          build-args: |
+            BUILD_DATE=${{github.event.repository.updated_at}}
+            BUILD_REV=${{github.sha}}
+
+      - name: 🏗 Sign the image with GitHub OIDC Token
+        if: ${{ github.event_name != 'pull_request' && steps.file_change.outputs.container_folder != 'false' }}
+        env:
+          COSIGN_EXPERIMENTAL: 'true'
+        run: echo "${{steps.meta.outputs.tags}}" | xargs -I {} cosign sign --yes {}@${{steps.build_and_push.outputs.digest}}
