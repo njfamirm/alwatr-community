@@ -60,7 +60,7 @@
     "@web/dev-server": "^0.4.0",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "autoprefixer": "^10.4.16",
-    "esbuild": "^0.19.5",
+    "esbuild": "^0.19.6",
     "eslint": "^8.53.0",
     "eslint-config-google": "^0.14.0",
     "eslint-import-resolver-typescript": "^3.6.1",
