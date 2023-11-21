@@ -40,7 +40,7 @@
     "tslib": "^2.6.2"
   },
   "devDependencies": {
-    "@alwatr/type": "^1.1.5",
+    "@alwatr/type": "^1.2.0",
     "@grammyjs/types": "^3.3.0"
   }
 }
