@@ -4,7 +4,7 @@ import {config, logger} from './config.js';
 import {message} from './director/l18e-loader.js';
 import {bot} from './lib/bot.js';
 import {contentStorageClient} from './lib/storage.js';
-import {adminInfoList} from './util/admin.js';
+import {adminInfoList, notifyAdmin} from './util/admin.js';
 import {dateDistance, fatemieh} from './util/calender.js';
 import {actionAllChat, checkDayCountdownSent, deleteChat, setDayCountdownSent} from './util/chat.js';
 
@@ -15,14 +15,7 @@ export async function sendDayCountdownContent(day: number): Promise<void> {
   const content = await contentStorageClient.get(day + '', 'fatemieh');
   if (content == null) {
     logger.accident('dayCountdown', 'content_is_null', {day});
-    for (let i = adminInfoList.length - 1; 0 <= i; i--) {
-      await bot.api.sendMessage(adminInfoList[i].chatId,
-          message('send_get_content_null_message').replace('${day}', day + '',
-          ), {
-            message_thread_id: adminInfoList[i].messageThreadId,
-          });
-    }
-
+    await notifyAdmin(message('send_get_content_null_message').replace('${day}', day + ''));
     return;
   }
 
@@ -57,12 +50,7 @@ export async function sendDayCountdownContent(day: number): Promise<void> {
     }
   });
 
-  for (let i = adminInfoList.length - 1; 0 <= i; i--) {
-    await bot.api.sendMessage(adminInfoList[i].chatId,
-        message('send_day_count_down_success').replace('${count}', userCount + ''), {
-          message_thread_id: adminInfoList[i].messageThreadId,
-        });
-  }
+  await notifyAdmin(message('send_day_count_down_success').replace('${count}', userCount + ''));
 }
 
 function scheduleDailyTask(targetTime: Date, callback: () => MaybePromise<void>): void {
