@@ -35,7 +35,7 @@
     "watch:es": "yarn build:es --watch"
   },
   "devDependencies": {
-    "@alwatr-community/telegram": "^0.2.1",
+    "@alwatr-community/telegram": "workspace:^",
     "@alwatr/fetch": "^2.1.0",
     "@alwatr/i18n": "^1.1.2",
     "@alwatr/logger": "^2.2.0",
