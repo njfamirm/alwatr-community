@@ -1,6 +1,6 @@
 {
   "name": "@alwatr-community/apod-crawler",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Alwatr Nasa APOD crawler",
   "type": "module",
   "author": "S. Amir Mohammad Najafi <njfamirm@gmail.com> (https://njfamirm.ir)",

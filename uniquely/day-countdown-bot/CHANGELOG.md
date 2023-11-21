@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/njfamirm/alwatr-community/compare/@alwatr-community/day-countdown-bot@0.2.0...@alwatr-community/day-countdown-bot@0.3.0) (2023-11-21)
+
+### Bug Fixes
+
+* **dcd-bot:** set sent if success ([f8d4f1e](https://github.com/njfamirm/alwatr-community/commit/f8d4f1e61e39c4c39b423816451416b8239ce2bc)) by @njfamirm
+
+### Features
+
+* **dec-bot:** enable invattion ([84cefd7](https://github.com/njfamirm/alwatr-community/commit/84cefd7639af3d4df7177c1bbbd1092b4563a134)) by @njfamirm
+
 # 0.2.0 (2023-11-05)
 
 ### Bug Fixes

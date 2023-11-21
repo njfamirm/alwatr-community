@@ -1,6 +1,6 @@
 {
   "name": "@alwatr-community/telegram",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Elegant micro telegram api.",
   "keywords": [
     "telegram",
