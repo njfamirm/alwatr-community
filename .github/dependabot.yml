@@ -38,6 +38,3 @@ updates:
         dependency-type: 'development'
         exclude-patterns:
           - '*lint*'
-      lint-dependencies:
-        patterns:
-          - '*lint*'

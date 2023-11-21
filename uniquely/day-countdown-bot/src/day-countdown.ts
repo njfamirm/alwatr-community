@@ -38,15 +38,22 @@ export async function sendDayCountdownContent(day: number): Promise<void> {
         message_thread_id: chat.chatDetail!.messageThreadId as number | undefined,
       });
 
-      await setDayCountdownSent(day, chat.id);
 
-      if (response?.ok === true) userCount++;
+      if (response?.ok === true) {
+        userCount++;
+        await setDayCountdownSent(day, chat.id);
+      }
       else if (response?.error_code === 403) {
         await deleteChat(chat.id);
       }
+      else {
+        throw new Error('copy_message_error', {
+          cause: response,
+        });
+      }
     }
-    catch {
-      logger.accident('dayCountdown', 'copy_message_error', {day, chatId: chat.id});
+    catch (error) {
+      logger.accident('dayCountdown', 'copy_message_error', {day, chatId: chat.id, error});
     }
   });
 
