@@ -40,6 +40,11 @@ export async function sendDayCountdownContent(day: number): Promise<void> {
         await deleteChat(chat.id);
       }
       else {
+        await notifyAdmin(
+            message('send_day_countdown_content_failed')
+                .replace('${chatId}', chat.id + '')
+                .replace('${error}', response.description),
+        );
         throw new Error('copy_message_error', {
           cause: response,
         });
