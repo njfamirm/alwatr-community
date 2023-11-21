@@ -24,7 +24,7 @@ export const config = {
   },
   bot: {
     adminToken: process.env.ADMIN_TOKEN ?? 'admin-token',
-    notifyTimestamp: 9,
+    notifyTimestamp: 18,
   },
   storageClient: {
     host: process.env.STORAGE_HOST ?? '127.0.0.1',
