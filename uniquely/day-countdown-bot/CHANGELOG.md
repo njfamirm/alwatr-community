@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/njfamirm/alwatr-community/compare/@alwatr-community/day-countdown-bot@0.3.0...@alwatr-community/day-countdown-bot@0.3.1) (2023-11-21)
+
+### Bug Fixes
+
+* **dcd-bot:** use workspace verion for telegram ([01827cc](https://github.com/njfamirm/alwatr-community/commit/01827cca4600494a9fda6099c5cce09cafa3e050)) by @njfamirm
+
 # [0.3.0](https://github.com/njfamirm/alwatr-community/compare/@alwatr-community/day-countdown-bot@0.2.0...@alwatr-community/day-countdown-bot@0.3.0) (2023-11-21)
 
 ### Bug Fixes
