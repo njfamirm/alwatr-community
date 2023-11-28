@@ -36,7 +36,7 @@
     "@alwatr/logger": "^2.2.0",
     "@alwatr/nano-server": "^1.2.0",
     "@alwatr/storage-client": "^1.1.2",
-    "@alwatr/storage-engine": "^1.1.2",
+    "@alwatr/storage-engine": "^4.0.0",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
