@@ -45,10 +45,10 @@
     "@alwatr/type": "^1.2.0",
     "@grammyjs/types": "^3.3.0",
     "@types/moment-jalaali": "^0.7.9",
-    "@types/node": "^20.10.1",
+    "@types/node": "^20.10.3",
     "esbuild": "^0.19.8",
     "moment-jalaali": "^0.10.0",
-    "nodemon": "^3.0.1",
+    "nodemon": "^3.0.2",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.3.2"
   }
