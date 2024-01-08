@@ -41,6 +41,6 @@
   },
   "devDependencies": {
     "@alwatr/type": "^1.2.0",
-    "@grammyjs/types": "^3.3.0"
+    "@grammyjs/types": "^3.4.6"
   }
 }
