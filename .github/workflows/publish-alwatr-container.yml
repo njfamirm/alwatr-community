@@ -69,7 +69,7 @@ jobs:
 
       - name: 🏗 Extract metadata
         id: meta
-        uses: docker/metadata-action@v5.2.0
+        uses: docker/metadata-action@v5.5.1
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           images: name=${{ env.REGISTRY }}/${{ env.USERNAME }}/${{ matrix.image }},enable=true
@@ -87,7 +87,7 @@ jobs:
             type=ref,enable=true,event=branch
 
       - name: 🏗 Setup nodejs
-        uses: actions/setup-node@v4.0.0
+        uses: actions/setup-node@v4.0.2
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
@@ -120,7 +120,7 @@ jobs:
 
       - name: 🏗 Install cosign
         if: ${{ github.event_name != 'pull_request' }}
-        uses: sigstore/cosign-installer@v3.2.0
+        uses: sigstore/cosign-installer@v3.4.0
 
       - name: 🏗 Sign the published container image
         if: ${{github.event_name != 'pull_request'}}
